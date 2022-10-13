@@ -1,0 +1,69 @@
+\begin{thebibliography}{10}
+
+\bibitem{weinman90}
+Weinman JA, Meneghini R, Nakamura K.   
+\newblock Retrieval of precipitation profiles from airborne radar and passive radiometer measurements: Comparison with dual-frequency radar measurements.
+\newblock Journal of Applied Meteorology. 1990; 200(29): 981 -- 993.
+
+
+\bibitem{hitschfeld1954}
+  Hitschfeld W, Bordan J.
+\newblock Errors inherent in the radar measurement of rainfall at attenuating wavelengths.
+\newblock  Journal of Atmospheric Sciences. 1990; 11(1): 58--67.
+
+\bibitem{Meneghini1983}
+  Meneghini R, Eckerman J, Atlas D.
+\newblock Dermination of Rain Rate from a Spaceborne Radar Using Measurements of Total Attenuation.
+\newblock IEEE Transactions on Geoscience and Remote Sensing.1983;GE-21;34--43.
+
+\bibitem{Fujita1985}
+Fujita M, Okamoto K, Yoshikado S, Nakamura K.
+\newblock Inference of rain rate profile and path-integrated rain rate by an airborne microwave rain scatterometer.
+\newblock Radio Science. 1985; 20(3); 631--642.
+
+\bibitem{smith1997}
+Smith E.
+\newblock Estimating 13.8-GHz pathintegrated attenuation from 10.7-GHz brightness temperatures for the TRMM combined PRTMI precipitation algorithm.
+\newblock  Journal of Applied Meteorology. 1997; 36; 365--388.
+
+\bibitem{kummerow1998}
+Kummerow CK.
+\newblock The Tropical Rainfall Measuring Mission (TRMM) sensor package. 
+\newblock Journal of Atmospheric and Oceanic Technology. 1998; 15; 809--817.
+
+\bibitem{haddad1997}
+Haddad Z.
+\newblock The TRMM day-1 radar/radiometer combined rain-profiling algorithm.
+\newblock Journal of the Meteorological Society of Japan. 1997; 75; 799--809.
+
+\bibitem{grecu2004}
+Grecu M, Olson WS, Anagnostou E.
+\newblock Retrieval of precipitation profiles from multiresolution, multifrequency active and passive microwave observations.
+\newblock Journal of Applied Meteorology. 2004; 43; 562--575.
+
+\bibitem{masunaga2005}
+Masunaga H.
+\newblock Combined radar and radiometer analysis of precipitation profiles for a parametric retrieval algorithm. 
+\newblock Journal of Atmospheric and Oceanic Technology. 2005; 22; 909--929.
+
+\bibitem{munchak2011}
+Munchak J.
+\newblock A modular optimal estimation method for combined radar-radiometer precipitation profiling. 
+\newblock Journal of Applied Meteorology and Climatology. 2001; 50; 433--448.
+
+\bibitem{grecu2006}
+Grecu M, Olson W.S.
+\newblock Bayesian estimation of precipitation from satellite passive microwave observations using combined radar retrievals.
+\newblock Journal of Applied Meteorology and Climatology. 2006; 45; 416--433.
+
+\bibitem{kummerow2011}
+Kummerow C.
+\newblock An observationally generated a priori database for microwave rainfall retrievals. 
+\newblock Journal of Atmospheric and Oceanic Technology. 2011; 28; 113--130.
+
+\bibitem{hou2014}
+Hou A.
+\newblock The global precipitation measurement mission. 
+\newblock Bulletin of the American Meteorological Society. 2014; 95; 701--722.
+
+\end{thebibliography}

@@ -1,0 +1,85 @@
+
+\documentclass[10pt]{ietbook}
+\usepackage{listings}
+\begin{document}
+
+%For RH Book title
+\rhbooktitle{Book title}
+%\setminted[python]{breaklines, framesep=2mm, fontsize=\footnotesize, numbersep=5pt}
+
+\markboth{Running head verso book title}{Running head recto chapter title}
+
+\cauthor{Mircea Grecu\thanks{GESTAR-II, Morgan State University and NASA GSFC} and\\
+William S. Olson\thanks{GESTAR-II,UMBC and NASA GSFC} }
+
+\chapter{Satellite Combined Radar-Radiometer algorithms}
+
+Some abstract here.
+\section{Introduction}
+
+The benefit of incorporating radiometer observations into methodologies that estimate precipitation from
+space-borne radar observations was first realized by \cite{weinman90}. Specifically, due to size and weight limitations on antennae, space-borne radars 
+operate at frequencies that make observations subject to attenuation. While
+attenuation correction methodologies exist, e.g. \cite{hitschfeld1954}, variability in the size distribution of
+precipitation particles within the radar observing volume makes the attenuation correction process highly uncertain.
+At the same time, it had been recognized \cite{Meneghini1983} that independent information regarding the Path-Integrated-Attenuation (PIA) 
+may be used to reduce uncertainties in the attenuation correction process. PIA information
+independent of the radar measurements used in the attenuation correction process may be derived from the analysis
+of the electromagnetic power backscattered by the Earth's surface \cite{Meneghini1983} and, as noted by Weinman et al. \cite{weinman90}, 
+low-frequency radiometer observations when available.  The objective of the surface analysis is to estimate the power backscattered by Earth's surface in the 
+absence of the rain.  In the presence of rain, the ratio between the actual backscattered power and the estimated clear-sky backscattered power provides an estimate
+of the total attenuation from the radar to the Earth's surface \cite{Meneghini1983} that can be used in attenuation correction and precipitation estimation process. 
+The problem with the PIA estimation using this approach, usually referred to as the Surface Reference Technique (SRT), is that the estimation of the no-precipitation 
+backscattered power may be highly uncertain in some situations.  As recognized by Weinman et al. \cite{weinman90} and even earlier investigators, e.g. \cite{Fujita1985},
+radiometer observations over water surfaces at frequencies not associated with significant scattering (e.g. 10- and 19-GHz) contain information strongly related to the PIA.  
+This is because the emissivity of water surface is low and rain drops in the radiometer observing volume result in warmer brightness temperatures.  The departure from the
+brightness temperature value expected in clear skies may be used to estimate the equivalent PIA at the radar operating frequency \cite{weinman90}.  The initial study of
+Weinman et al. \cite{weinman90} provided a relationship between coincident radiometer observations at X-band and the associated PIA at X-band (9.6-GHz). Subsequent work 
+Smith et al. \cite{smith1997} was carried out to determine a relationship between the PIA at Ku-band (13.8 GHz) and coincident radiometer observations 10.7-GHz. 
+This relationship was developed for use in the Tropical Rainfall Measuring Mission (TRMM) \cite{kummerow1998} combined radar-radiometer algorithm \cite{haddad1997}.
+
+However, although the relationships between low frequency brightness temperatures and the radar PIA at X- and Ku-band are well-defined and unambiguous, the use of satellite
+radiometer observations in satellite radar profiling algorithms is challenging. This because the typical footprints of low-frequency radiometer observations are significantly
+larger than the typical footprints of space-borne radars, which makes the radiometer observations difficult to translate into radar PIA. To overcome this difficulty various
+approaches akin to the downscaling of the radiometer observations to the radar footprint resolution have been developed \cite{haddad1997,grecu2004,masunaga2005,munchak2011}.
+A common feature of these approaches was that the radar-footprint PIA was not directly estimated from the radiometer observations. Instead, 
+optimization procedures were used to maximize the agreement between radiometer observations predicted from the radar observations and actual radiometer observations.  While
+the impact of the radiometer observations on the final radar estimates is difficult to quantify, a clear benefit of combined radar-radiometer precipitation retrievals
+are consistent with both the radar and radiometer observations.  Consequently, they may be used to derive large databases of precipitation and associated radiometer observations
+necessary in the development of “Bayesian” precipitation estimation algorithms from satellite
+radiometer-only observations \cite{grecu2006,kummerow2011,hou2014}. 
+
+
+%\begin{table}[!tb]
+%\caption{A table}
+%\processtable{ Example of code }
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{caption={Insert code directly in your document}}
+%\lstset{label={lst:code_direct}}
+%\lstset{basicstyle=\footnotesize}
+\begin{lstlisting}
+from brg.datastructures import Mesh
+ 
+mesh = Mesh.from_obj('faces.obj')
+mesh.draw()
+\end{lstlisting}
+%\end{table}
+
+%\subsection{B heading (level 2)}
+
+%\subsubsection{C heading (level 3)}
+
+%\begin{figure}[!b]
+%\centerline{\fbox{\hbox to 20pc{\vbox to 10pc{}}}}
+%\caption{little figure here}
+%\end{figure}
+
+%\paragraph{D heading (level 4)}
+
+
+
+\bibliographystyle{vancouver-modified}
+\bibliography{sample-vancouver}
+
+\end{document}

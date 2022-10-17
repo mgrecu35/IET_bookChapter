@@ -66,4 +66,88 @@ Hou A.
 \newblock The global precipitation measurement mission. 
 \newblock Bulletin of the American Meteorological Society. 2014; 95; 701--722.
 
+\bibitem{meneghini1990}
+Meneghini R, Kozu T.
+\newblock Spaceborne weather radar.
+\newblock Boston: Artech House Publ. 1990; ISBN: 0890063826.
+
+\bibitem{marshall_palmer_1948}
+Marshall JS, Palmer WMK.
+\newblock The distribution of raindrops with size. 
+\newblock J. Meteorol. 1948, 5, 165–166.
+
+\bibitem{marshall_w_palmer_1947}
+J. S.  Marshall and R. C.  Langille and W. Mc K.  Palmer",
+\newblock Measurement of rainfall by radar.
+\newblock Journal of Atmospheric Sciences. 1997; 4(6); 186--192.
+
+
+
+\bibitem{ulbrich1983}
+Ulbrich CW.
+\newblock Natural variations in the analytical form of the raindrop size distribution.
+\newblock Journal of climate and applied meteorology. 1983; 22(10). 1764--1775.
+
+\bibitem{ssrivastava1970} 
+Sekhon RS, Srivastava RC.
+\newblock Snow Size Spectra and Radar Reflectivity.
+\newblock Journal of Atmospheric Sciences. 1970; 27(2); 299--307.
+
+\bibitem{heymsfield_a1977}
+Heymsfield A.
+\newblock Precipitation Development in Stratiform Ice Clouds: A Microphysical and Dynamical Study
+\newblock Journal of Atmospheric Sciences. 1977; 34(2); 367--381.
+
+\bibitem{battan1973}
+Battan LJ.
+\newblock Radar observation of the atmosphere.
+\newblock 1973.
+
+\bibitem{bhmie2008}
+Bohren CF, Huffman DR. 
+\newblock Absorption and scattering of light by small particles. 
+\newblock John Wiley and Sons. 2008.
+
+\bibitem{misch2002}
+Mishchenko MI, Travis LD, Lacis AA. 
+\newblock Scattering, absorption, and emission of light by small particles. 
+\newblock Cambridge university press; 2002 Jun 6.
+
+\bibitem{tyynela2011}
+Tyynelä J, Leinonen J, Moisseev D, Nousiainen T. 
+\newblock Radar backscattering from snowflakes: Comparison of fractal, aggregate, and soft spheroid models. 
+\newblock Journal of Atmospheric and Oceanic Technology. 2011 Nov;28(11):1365-72.
+
+\bibitem{liu2004}
+Liu G. 
+\newblock Approximation of single scattering properties of ice and snow particles for high microwave frequencies. 
+\newblock Journal of the atmospheric sciences. 2004 Oct 1;61(20):2441-56.
+
+\bibitem{kuo2016}
+Kuo KS, Olson WS, Johnson BT, Grecu M, Tian L, Clune TL, van Aartsen BH, Heymsfield AJ, Liao L, Meneghini R. 
+\newblock The Microwave Radiative Properties of Falling Snow Derived from Nonspherical Ice Particle Models. 
+Part I: An Extensive Database of Simulated Pristine Crystals and Aggregate Particles, and Their Scattering Properties
+\newblock Journal of Applied Meteorology and Climatology. 2016 Mar 1;55(3):691-708.
+
+\bibitem{dda1994}
+Draine BT, Flatau PJ. 
+\newblock Discrete-dipole approximation for scattering calculations. 
+\newblock Josa a. 1994 Apr 1;11(4):1491-9.
+
+\bibitem{hogan2017}
+Hogan RJ, Honeyager R, Tyynelä J, Kneifel S. 
+\newblock Calculating the millimetre‐wave scattering phase function of snowflakes using the self‐similar Rayleigh–Gans Approximation. 
+\newblock Quarterly Journal of the Royal Meteorological Society. 2017 Jan;143(703):834-44.
+
+\bibitem{spectral_matlab}
+Trefethen LN. 
+\newblock Spectral methods in MATLAB. 
+\newblock Society for industrial and applied mathematics; 2000 Jan 1.
+
+\bibitem{rosenkranz1998}
+Rosenkranz, P.W. 
+\newblock Water vapor microwave continuum absorption: A comparison of measurements and models. 
+\newblock Radio Sci. 1998, 33, 919–928.
+
 \end{thebibliography}
+

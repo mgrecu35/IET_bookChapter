@@ -1,6 +1,7 @@
 
 \documentclass[10pt]{ietbook}
 \usepackage{listings}
+%\usepackage{breqn}
 \begin{document}
 
 %For RH Book title
@@ -69,7 +70,7 @@ focused preponderantly on rain, as measurement techniques improved, PSD studies 
 
 Equally important to the description of PSDs is the quantification of the amount of radar power backscattered by precipitation particles. 
 To simplify the analysis, the radar measurements of returned power are converted into a related variable called the equivalent 
-radar reflectivity factor, defined as:
+radar reflectivity factor, defined as \cite{meneghini1990}:
 
 \begin{equation} \label{eq:Z}
 Z=\frac {\lambda ^4} {\pi ^5 |K_w|^2} \int_0^{\infty} N(D) \sigma _b(D) dD
@@ -118,14 +119,125 @@ approximation of Hogan et al. \cite{hogan2017}  that together with the Mie-based
 Rosenkranz \cite{rosenkranz1998}) provide the ingredients necessary to simulate space-borne radar and radiometer observations from 
 atmospheric geophysical variables.
 
-\begin{figure}
+Although valuable insight can be derived from analytical formulations of the PSDs, the increased availability of PSD observations from field
+campaigns eventually resulted in a paradigm shift regarding the use of the PSD observations in precipitation estimation methodologies.  Specifically,
+it was found that a concentration scaling parameter $N_w$ can be derived from observations without any assumption regarding the PSD shape 
+and used along with a geometric scaling parameter, i.e.
+the volume weighted $D_m$, to accurately characterize all relevant PSDs and the associated radar and radiometer properties \cite{norm_dsd_2001}.  
+The concentration scaling
+parameter, also known as the generalized PSD intercept \cite{bringi2003}, is defined as
+\begin{equation} \label{eq:nw}
+    N_w=\frac {4^4} {\pi \rho_w} \frac {PWC} {D_m^4}
+\end{equation}
+where $PWC$ is the equivalent precipitation (either ice or rain) water content and $D_m$ is the volume (or mass) weighted diameter.  One of
+the most consequential implications of the normalized intercept is the fact that it can explain and mitigate variability in the relationships between
+radar observations and associated precipitation variables such as equivalent water content and rate.  
+That is, representations of the joint distributions of reflectivities simulated from 
+observed PSDs and the associated precipitation water content exhibit significant variability that makes the estimates the precipitation water content
+from single frequency reflectivity observations highly uncertain.  Shown in the left-hand panel of Fig. \ref{fig:normZ} is the joint distribution of 
+IWC and associated reflectivity at Ku-band calculated using PSD observations from the NASA IMPACTS field experiment \cite{impacts2022}.  As apparent 
+in the panel, the joint distribution is broad with a broad range of IWC values associated with any given reflectivity.  However, normalization of 
+both IWC and reflectivity by the associated $N_w$ makes the resulting joint ($IWC/N_w$, $Z(Ku)/N_w$) very narrow and close to a one-to-one function.
+This means that $IWC/N_w$ can be accurately predicted from $Z(Ku)/N_w$.  While normalization by itself does not eliminate uncertainties, because one
+needs information about $N_w$ to derive a closed form solution for $IWC$, it does provide a general and physical consistent 
+framework to investigate and mitigate uncertainties in space-borne radar and radiometer retrievals.  This will be explained in detail in the next 
+section.  A remarkable fact regarding the normalization by $N_w$ is that it collapses all radar-precipitation relationships (e.g. reflectivity vs precipitation
+rate, attenuation vs reflectivity, attenuation vs. precipitation rate etc.) to one-to-one functions for both ice and water \cite{ferreira2001}.
 
+
+\begin{figure} 
 \centerline{ }
 \includegraphics[width=\textwidth]{normZvsnormIWC.png}
 
 \caption{ (Left) joint distribution of ice water content (IWC) and associated Ku-band reflectivity calculated from PSD observations from IMPACTS and
 (Right) joint distribution of normalized IWC and Ku-band reflectivity. }
+\label{fig:normZ}
 \end{figure}
+
+\subsection{Radar and radiometer models}
+The measured radar reflectivity at range $r$ can be expressed as a function of the true radar reflectivity at range $r$, $Z(r)$, and the integrated attenuation
+along the path \cite{iguchi_meneghini_1994}.
+\begin{equation}\label{eq:radarEq}
+Z_m(r)=Z(r) \exp(-0.2\ln(10)\int_0^r k(Z(s))ds)
+\end{equation}
+where $k(Z(s))$ is the specific attenuation at range $s$.  The specific attenuation can be determined as a function of an observed or assumed analytical PSD
+using an equation similar to Eq. \ref{eq:Z}, i.e. $k=\int_0^{\infty} N(D) \sigma_e(D)dD$, with the extinction cross-section $\sigma_e(D)$ determined using one of
+the electromagnetic computational methodologies described in the previous section.  When the specific attenuation and the reflectivity are related through a 
+power law, i.e. $k=\alpha Z^\beta$ with $\beta$ constant with range, a closed form solution for $Z$ exists \cite{iguchi_meneghini_1994}, i.e.
+\begin{equation}\label{eq:hbsol}
+Z(r)=Z_m(r) /(1-q\int_0^r Z_m^\beta(s)ds)^{1/\beta}
+\end{equation}
+where $q=0.2\beta ln(10)$.  This solution was first derived by Hitschfeld and Bordan \cite{hitschfeld1954} and started
+getting prominent in spaceborne radar applications with the work of \cite{meneghini1983}, \cite{marzoug1991} 
+and \cite{iguchi_meneghini_1994}.
+
+A particular challenge in applying Eq. \ref{eq:hbsol} to radar observations affected by significant attenuation is
+that the numerical value of term $q\int_0^r Z_m^\beta(s)ds$ may become larger than 1.0, in which case the equation
+is not applicable anymore. Moreover, even if $q\int_0^r Z_m^\beta(s)ds<1$ the path integrated attenuation associated
+with Eq. \ref{eq:hbsol} may not be in agreement with estimates from a Surface Reference Technique (SRT) analysis.  This
+is discussed in \cite{marzoug1991} and \cite{iguchi_meneghini_1994}.  Several ad-hoc techniques were developed to 
+reconcile solution \ref{eq:hbsol} with the SRT estimates, but, fundamentally, the problem was not satisfactorily 
+addressed from the physical perspective until the work of Ferreira et al. \cite{ferreira2001}. 
+Ferreira et al. \cite{ferreira2001} noted that all $k-Z$, $Z-R$ or $Z-PWC$ (where $k$ is the specific attenuation
+and $Z$, $R$ and $PWC$ are the associated reflectivity, precipitation rate and precipitation water content) are 
+exact for a given constant $N_w$.  They also noted that more general relationships, explicitly accounting for the $N_w$
+variability, need to be derived and used to make the Hitschfeld-Bordan 
+solution in Eq. \ref{eq:hbsol} consistent with SRT estimates of Path Integrated Attenuation (PIA).  Specifically,
+a more general $k-Z$ relationship of the type
+\begin{equation} \label{eq:kZ}
+k=dN_w^{1-\beta} \alpha Z^{\beta}
+\end{equation}
+where $dN_w$ is the ratio of actual $N_w$ to that of the reference $N_{w}^0$ for which the relation $k=\alpha Z^{\beta}$ 
+holds perfectly may be derived and used with \ref{eq:hbsol}.  The PIA attenuation associated with the generalized 
+$k-Z$ relation in  \ref{eq:kZ} is
+\begin{equation} \label{eq:PIA}
+PIA_{HB}(dN_w)=-10/\beta \log_{10}(1-q dN_w^{1-\beta} \int_0^{r_s}\alpha Z_m^\beta(s)ds)
+\end{equation}
+Given an independent estimate of PIA from the SRT, $PIA_{SRT}$, one may determine the value of $dN_w$ that satisfy
+$PIA_{HB}(dN_w)=PIA_{SRT}$.  This provides a physical approach to reconcile the Hitschfeld-Bordan solution with a potentially
+different SRT PIA estimate \cite{ferreira2001}.  The benefit of this approach relative to more ad-hoc approaches such
+as the $\alpha$ adjustment method \cite{iguchi_meneghini_1994} is that it enables the adjustment of the $Z-R$ 
+(or $Z-PWC$) used in the estimation of precipitation rates (or equivalent water contents) from the attenuation corrected
+reflectivities \cite{ferreira2001}. This is because if systematically different mean particle sizes may result not only
+in biased attenuation correction,  but also in biased precipitation estimates due to the application of a biased reflectivity
+precipitation relationship.  Therefore, the benefit of using $N_w$-based relationships is twofold \cite{ferreira2001}.
+
+It should be noted that because neither the SRT estimates nor the Hitschfeld-Bordan predictions of PIA are perfect,
+equating them exactly is suboptimal because it attributes various types of uncertainties to variability in the $N_w$.
+A better approach is to adjust $N_w$ such that the final $PIA_{HB}$ is consistent with both the uncertainties in its
+initial values (prior to the SRT based adjustment) and the $PIA_{SRT}$ uncertainties. Iguchi et al. \cite{iguchi2000}
+developed such a methodology based on Bayes estimation theory. However, Iguchi et al. \cite{iguchi2000} did not update
+the Hitschfeld-Bordan solution in terms of $N_w$, but in terms of an equivalent variable $\epsilon$, and it was Ferreira
+et al. \cite{ferreira2001} who made the connection between SRT estimates and $N_w$ adjustments.
+
+The use of normalized $k-Z$ and $Z$-precipitation relation is beneficial even when SRT PIA estimates are not available
+but additional sources of information, such as coincident radiometer observations are available.  Specifically, if a
+set of observations $Y_obs$ independent of the radar observations used in a radar-only precipitation profiling algorithm,
+one may tune the $N_w$ assumptions made in the radar-only profiling algorithm to maximize the agreement between
+them and their prediction from the radar-only estimates.  Or, more precisely, an objective function may be defined as 
+\begin{multline} \label{eq:fobj}
+    F(\mathbf{N_w})=\frac {1}{2} \mathbf{(Y_{obs}-Y(Z_m(N_w)))^T W_Y^{-1} (Y_{obs}-Y(Z_m(N_w)))} +\\
+    \frac {1} {2} \mathbf{(N_w-N_w^0)^T W_N^{-1} (N_w-N_w^0)}
+\end{multline}
+where $\mathbf{Y(Z_m(N_w))}$ is a numerical model that predicts observations $\mathbf{Y_{obs}}$ as a function of the space-borne
+radar observations $\mathbf{Z_m}$ and the normalized $\mathbf{N_w}$ intercepts. Matrix $\mathbf{W_Y^{-1}}$ quantifies uncertainties
+in model $\mathbf{Y}$, while $\mathbf{N_w^0}$ and $\mathbf{W_N}$ are the climatological values of $\mathbf{N_w}$ and their 
+associated covariance matrix.
+Note that $\mathbf{Y_{obs}}$ may consist of any useful combination of space- or ground-based observations, while the set of $N_w$ may
+need to be extended to include other geophysical variables relevant in the prediction of $\mathbf{Y}$.  From the mathematical perspective,
+the problem of determining $\mathbf{N_w}$ from $\mathbf{Y_{obs}}$ is generally ill-posed and additional climatological, or 
+"a priori" in statistical language, information is needed to derive a unique solution \cite{tarantola2005}.  The additional information
+is provided by the second term of the objective function in Eq. \ref{eq:fobj}. An implementation of a combined radar-radiometer estimation
+algorithm based on Eq. \ref{eq:fobj} and applicable to airborne observations was developed by Grecu and Anagnostou \cite{grecu2002}.
+An evaluation based on synthetic observations derived from cloud resolving model simulations indicated the superiority of the relative
+to radar-only retrievals.  A potentially more general approach, i.e. considering a larger set of state variables, more computationally 
+more intensive and prone to challenges when used in operational environment had been developed by Marzano et al. \cite{marzano1999}.
+
+
+%F(N_w)=\frac {1}{2}  W_Y^{-1} ) 
+
+% + \frac {1} {2} (N_w-N_w^0)^T W_N^{-1} (N_w-N_w^0)
+
 
 
 %\begin{table}[!tb]

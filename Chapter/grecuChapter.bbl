@@ -149,5 +149,60 @@ Rosenkranz, P.W.
 \newblock Water vapor microwave continuum absorption: A comparison of measurements and models. 
 \newblock Radio Sci. 1998, 33, 919–928.
 
+\bibitem{norm_dsd_2001}
+Testud J, Oury, S, Black RA, Amayenc P,  Dou X.
+\newblock  The Concept of “Normalized” Distribution to Describe Raindrop Spectra: A Tool for Cloud Physics and Cloud Remote Sensing. 
+\newblock Journal of Applied Meteorology, (2001). 40(6); 1118--1140.
+
+\bibitem{bringi2003}
+Bringi VN, Chandrasekar V, Hubbert J, Gorgucci E, Randeu WL, Schoenhuber M. 
+\newblock Raindrop size distribution in different climatic regimes from disdrometer and dual-polarized radar analysis. 
+\newblock Journal of the atmospheric sciences. 2003 Jan;60(2):354-65.
+
+\bibitem{ferreira2001}
+Ferreira F, Amayenc P, Oury S, Testud J. 
+\newblock Study and tests of improved rain estimates from the TRMM precipitation radar. 
+\newblock Journal of Applied Meteorology. 2001 Nov;40(11):1878-99.
+
+\bibitem{impacts2022}
+McMurdie LA, Heymsfield GM, Yorks JE, Braun SA, Skofronick-Jackson G, Rauber RM, Yuter S, Colle B, McFarquhar GM, Poellot M, Novak DR. 
+\newblock Chasing Snowstorms: The Investigation of Microphysics and Precipitation for Atlantic Coast-Threatening Snowstorms (IMPACTS) Campaign. 
+\newblock Bulletin of the American Meteorological Society. 2022 May;103(5):E1248-74.
+
+\bibitem{iguchi_meneghini_1994}
+Iguchi T, Meneghini R. 
+\newblock Intercomparison of single-frequency methods for retrieving a vertical rain profile from airborne or spaceborne radar data. 
+\newblock Journal of Atmospheric and Oceanic Technology. 1994 Dec;11(6):1507-16.
+
+\bibitem{meneghini1983}
+Meneghini R, Eckerman J, Atlas D.
+\newblock Determination of Rain Rate from a Spaceborne Radar Using Measurements of Total Attenuation.
+\newblock IEEE Transactions on Geoscience and Remote Sensing, vol. GE-21, no. 1, pp. 34-43, Jan. 1983, doi: 10.1109/TGRS.1983.350528.
+
+\bibitem{marzoug1991}
+Marzoug M, Amayenc P. 
+\newblock Improved range-profiling algorithm of rainfall rate from a spaceborne radar with path-integrated attenuation constraint
+\newblock IEEE Transactions on Geoscience and Remote Sensing, vol. 29, no. 4, pp. 584-592, July 1991, doi: 10.1109/36.135820.
+
+\bibitem{iguchi2000}
+Iguchi T, Kozu T, Meneghini R, Awaka J, Okamoto KI. 
+\newblock Rain-profiling algorithm for the TRMM precipitation radar. 
+\newblock Journal of applied meteorology. 2000 Dec;39(12):2038-52.
+
+\bibitem{tarantola2005}
+Tarantola A. 
+\newblock Inverse problem theory and methods for model parameter estimation. 
+\newblock Society for industrial and applied mathematics; 2005 Jan 1.
+
+\bibitem{grecu2002}
+Grecu M, Anagnostou EN. 
+\newblock Use of Passive Microwave Observations in a Radar Rainfall-Profiling Algorithm
+\newblock Journal of Applied Meteorology, 41(7), 702-715.
+
+\bibitem{marzano1999}
+Marzano FS, Mugnai A, Panegrossi G, Pierdicca N, Smith EA, Turk J. 
+\newblock Bayesian estimation of precipitating cloud parameters from combined measurements of spaceborne microwave radiometer and radar. 
+\newblock IEEE Transactions on Geoscience and Remote Sensing. 1999 Jan;37(1):596-613.
+
 \end{thebibliography}
 

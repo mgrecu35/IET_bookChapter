@@ -226,13 +226,26 @@ associated covariance matrix.
 Note that $\mathbf{Y_{obs}}$ may consist of any useful combination of space- or ground-based observations, while the set of $N_w$ may
 need to be extended to include other geophysical variables relevant in the prediction of $\mathbf{Y}$.  From the mathematical perspective,
 the problem of determining $\mathbf{N_w}$ from $\mathbf{Y_{obs}}$ is generally ill-posed and additional climatological, or 
-"a priori" in statistical language, information is needed to derive a unique solution \cite{tarantola2005}.  The additional information
+"a priori" in statistical terminology, information is needed to derive a unique solution \cite{tarantola2005}.  The additional information
 is provided by the second term of the objective function in Eq. \ref{eq:fobj}. An implementation of a combined radar-radiometer estimation
 algorithm based on Eq. \ref{eq:fobj} and applicable to airborne observations was developed by Grecu and Anagnostou \cite{grecu2002}.
 An evaluation based on synthetic observations derived from cloud resolving model simulations indicated the superiority of the relative
-to radar-only retrievals.  A potentially more general approach, i.e. considering a larger set of state variables, more computationally 
+to radar-only retrievals.  A potentially more general approach, i.e. considering a larger set of state variables, but computationally 
 more intensive and prone to challenges when used in operational environment had been developed by Marzano et al. \cite{marzano1999}.
+Specifically, the state variables in \cite{marzano1999} included the precipitation water contents while the radar observations were 
+not implicitly satisfied but included in the optimization problem.  A comprehensive discussion on why an approach with a reduced number
+of variables and the radar observations at a given frequency automatically satisfied in provided in \cite{grecu2002}.
 
+Irrespective of whether single-frequency radar observations are included in the objective function or automatically satisfied, it should
+be noted that the use of additional information enables in theory the derivation of more accurate estimates of additional variables, such
+as the normalized PSD intercepts, that in the worst case scenarios are simply set up based on their climatology. To estimate the state
+variables in Eq. (\ref{eq:fobj}), a computationally efficient model to simulation the observations $\mathbf{Y}$ and an optimization procedure
+are needed.  The simulation of air- and space-borne radiometer requires a procedure to solve the radiative transfer equation,
+\begin{equation}
+\mu\frac {dI(\mu,\phi)}{d\tau}=I(\mu,\phi) - \frac {\omega} {4\pi} \int_0^{2\pi}\int_{-1}^{1}p(\mu,\phi,\mu',\phi')I(\mu',\phi')d\mu'd\phi'
+\end{equation}
+
+%µdI(µ, φ)dτ= I(µ, φ) −˜ω4π2π01−1p(µ, φ; µ, φ)I(µ, φ) dµdφ
 
 %F(N_w)=\frac {1}{2}  W_Y^{-1} ) 
 

@@ -209,5 +209,30 @@ Kummerow C.
 \newblock On the accuracy of the Eddington approximation for radiative transfer in the microwave frequencies. 
 \newblock Journal of Geophysical Research: Atmospheres. 1993 Feb 20;98(D2):2757-65.
 
+\bibitem{liu1996}
+Liu Q, Simmer C, Ruprecht E. 
+\newblock Three‐dimensional radiative transfer effects of clouds in the microwave spectral range. 
+\newblock Journal of Geophysical Research: Atmospheres. 1996 Feb 20;101(D2):4289-98.
+
+\bibitem{grecu2016}
+Grecu M, Olson WS, Munchak SJ, Ringerud S, Liao L, Haddad Z, Kelley BL, McLaughlin SF. 
+\newblock The GPM combined algorithm. 
+\newblock Journal of Atmospheric and Oceanic Technology. 2016 Oct 1;33(10):2225-45.
+
+\bibitem{gelb1974}
+Gelb, A. 
+\newblock Applied Optimal Estimation. 
+\newblock The M.I.T. Press.
+
+\bibitem{doicu2010}
+Doicu A, Trautmann T, Schreier F. 
+\newblock Numerical regularization for atmospheric inverse problems
+\newblock Springer Science and Business Media; 2010 Jul 16.
+
+\bibitem{maahn2020}
+Maahn M, Turner, DD, Löhnert U, Posselt DJ, Ebell K, Mace GG,  Comstock JM.
+\newblock Optimal Estimation Retrievals and Their Uncertainties: What Every Atmospheric Scientist Should Know.
+\newblock Bulletin of the American Meteorological Society. 2020; 101(9), E1512-E1523. 
+
 \end{thebibliography}
 

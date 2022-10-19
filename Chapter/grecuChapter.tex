@@ -160,8 +160,8 @@ along the path \cite{iguchi_meneghini_1994}.
 \begin{equation}\label{eq:radarEq}
 Z_m(r)=Z(r) \exp(-0.2\ln(10)\int_0^r k(Z(s))ds)
 \end{equation}
-where $k(Z(s))$ is the specific attenuation at range $s$.  The specific attenuation can be determined as a function of an observed or assumed analytical PSD
-using an equation similar to Eq. \ref{eq:Z}, i.e. $k=\int_0^{\infty} N(D) \sigma_e(D)dD$, with the extinction cross-section $\sigma_e(D)$ determined using one of
+where $k(Z(s))$ is the specific attenuation at range $s$.  The specific attenuation may be determined as a function of an observed or assumed analytical PSD
+using an equation similar to Eq. (\ref{eq:Z}), i.e. $k=\int_0^{\infty} N(D) \sigma_e(D)dD$, with the extinction cross-section $\sigma_e(D)$ determined using one of
 the electromagnetic computational methodologies described in the previous section.  When the specific attenuation and the reflectivity are related through a 
 power law, i.e. $k=\alpha Z^\beta$ with $\beta$ constant with range, a closed form solution for $Z$ exists \cite{iguchi_meneghini_1994}, i.e.
 \begin{equation}\label{eq:hbsol}
@@ -171,10 +171,10 @@ where $q=0.2\beta ln(10)$.  This solution was first derived by Hitschfeld and Bo
 getting prominent in spaceborne radar applications with the work of \cite{meneghini1983}, \cite{marzoug1991} 
 and \cite{iguchi_meneghini_1994}.
 
-A particular challenge in applying Eq. \ref{eq:hbsol} to radar observations affected by significant attenuation is
+A particular challenge in applying Eq. (\ref{eq:hbsol}) to radar observations affected by significant attenuation is
 that the numerical value of term $q\int_0^r Z_m^\beta(s)ds$ may become larger than 1.0, in which case the equation
 is not applicable anymore. Moreover, even if $q\int_0^r Z_m^\beta(s)ds<1$ the path integrated attenuation associated
-with Eq. \ref{eq:hbsol} may not be in agreement with estimates from a Surface Reference Technique (SRT) analysis.  This
+with Eq. (\ref{eq:hbsol}) may not be in agreement with estimates from a Surface Reference Technique (SRT) analysis.  This
 is discussed in \cite{marzoug1991} and \cite{iguchi_meneghini_1994}.  Several ad-hoc techniques were developed to 
 reconcile solution \ref{eq:hbsol} with the SRT estimates, but, fundamentally, the problem was not satisfactorily 
 addressed from the physical perspective until the work of Ferreira et al. \cite{ferreira2001}. 
@@ -182,7 +182,7 @@ Ferreira et al. \cite{ferreira2001} noted that all $k-Z$, $Z-R$ or $Z-PWC$ (wher
 and $Z$, $R$ and $PWC$ are the associated reflectivity, precipitation rate and precipitation water content) are 
 exact for a given constant $N_w$.  They also noted that more general relationships, explicitly accounting for the $N_w$
 variability, need to be derived and used to make the Hitschfeld-Bordan 
-solution in Eq. \ref{eq:hbsol} consistent with SRT estimates of Path Integrated Attenuation (PIA).  Specifically,
+solution in Eq. (\ref{eq:hbsol}) consistent with SRT estimates of Path Integrated Attenuation (PIA).  Specifically,
 a more general $k-Z$ relationship of the type
 \begin{equation} \label{eq:kZ}
 k=dN_w^{1-\beta} \alpha Z^{\beta}
@@ -198,7 +198,7 @@ $PIA_{HB}(dN_w)=PIA_{SRT}$.  This provides a physical approach to reconcile the 
 different SRT PIA estimate \cite{ferreira2001}.  The benefit of this approach relative to more ad-hoc approaches such
 as the $\alpha$ adjustment method \cite{iguchi_meneghini_1994} is that it enables the adjustment of the $Z-R$ 
 (or $Z-PWC$) used in the estimation of precipitation rates (or equivalent water contents) from the attenuation corrected
-reflectivities \cite{ferreira2001}. This is because if systematically different mean particle sizes may result not only
+reflectivities \cite{ferreira2001}. This is because systematically different mean particle sizes may result not only
 in biased attenuation correction,  but also in biased precipitation estimates due to the application of a biased reflectivity
 precipitation relationship.  Therefore, the benefit of using $N_w$-based relationships is twofold \cite{ferreira2001}.
 
@@ -227,8 +227,8 @@ Note that $\mathbf{Y_{obs}}$ may consist of any useful combination of space- or 
 need to be extended to include other geophysical variables relevant in the prediction of $\mathbf{Y}$.  From the mathematical perspective,
 the problem of determining $\mathbf{N_w}$ from $\mathbf{Y_{obs}}$ is generally ill-posed and additional climatological, or 
 "a priori" in statistical terminology, information is needed to derive a unique solution \cite{tarantola2005}.  The additional information
-is provided by the second term of the objective function in Eq. \ref{eq:fobj}. An implementation of a combined radar-radiometer estimation
-algorithm based on Eq. \ref{eq:fobj} and applicable to airborne observations was developed by Grecu and Anagnostou \cite{grecu2002}.
+is provided by the second term of the objective function in Eq. (\ref{eq:fobj}). An implementation of a combined radar-radiometer estimation
+algorithm based on Eq. (\ref{eq:fobj}) and applicable to airborne observations was developed by Grecu and Anagnostou \cite{grecu2002}.
 An evaluation based on synthetic observations derived from cloud resolving model simulations indicated the superiority of the relative
 to radar-only retrievals.  A potentially more general approach, i.e. considering a larger set of state variables, but computationally 
 more intensive and prone to challenges when used in operational environment had been developed by Marzano et al. \cite{marzano1999}.
@@ -242,15 +242,67 @@ as the normalized PSD intercepts, that in the worst case scenarios are simply se
 variables in Eq. (\ref{eq:fobj}), a computationally efficient model to simulation the observations $\mathbf{Y}$ and an optimization procedure
 are needed.  The simulation of air- and space-borne radiometer requires a procedure to solve the radiative transfer equation, which
 in the plane-parallel approximation reads \cite{kummerow1993}.
-\begin{multline}
+\begin{multline}\label{eq:rte}
 \mu k_{ext}\frac {dI(\mu,\phi)}{dz}=-I(\mu,\phi) + (1-a)B(T)+\\
 \frac {a} {4\pi} \int_0^{2\pi}\int_{-1}^{1}p(\mu,\phi,\mu',\phi')I(\mu',\phi')d\mu'd\phi'
 \end{multline}
 where $I(\mu,\phi)$ is the intensity in direction given by $\mu$ (the cosine of the angle between the actual direction and 
 the vertical axis) and azimuthal angle $\phi$, $k_{ext}$ is the extinction coefficient, $a$ is the scattering albedo (the ratio
 of the scattering coefficion to the extinction coefficients), $B(T)$ is the black body radiation emitted by the atmosphere at 
-temperature $T$ and the radiometer's frequency and $p(\mu,\phi,\mu',\phi')$ is the scattering function.
+temperature $T$ and the radiometer's frequency and $p(\mu,\phi,\mu',\phi')$ is the scattering function. The most general solvers
+of the radiative transfer equation are computationally intensive.  However, the assumption of no azimuthal dependence and the
+approximation of $I$ and $p(\mu,\mu')$ using the first two terms of a Legendre series \cite{kummerow1993} reduce the initial equation
+to a system of two coupled ordinary differential equations \cite{kummerow1993}.  Systematic evaluations between the approximate solution
+and more general solutions revealed differences that can mitigate through simple modifications that account for geometric effects in
+the approximate solution \cite{liu1996}.
 
+The relevant coefficients in Eq. (\ref{eq:rte}) are determined through the integration of the absorption, scattering and phase function
+properties of individual particles for given observed or analytical PSDs. A file containing the integrated scattering properties used in 
+the GPM combined algorithm \cite{grecu2016} is available in netCDF format at:
+https://github.com/mgrecu35/IET\_bookChapter/tree/main/lookupTables.
+The properties of four types of hydrometeors, i.e. rain, snow, graupel and hail, are included in the file. Properties are calculated assuming
+normalized gamma particle size distributions with $\mu$=2 and $N_w$=0.08cm$^{-4}$.  The mean mass diameter, precipitation rate,
+and precipitation water content associated with each entry are also included in the file. The rain, graupel and hail properties are calculated using
+the Mie approach, while the snow properties are derived from DDA calculations. Additional information is provided in the README.md in the lookup table
+directory. An implementation of plane-parallel radiative solver of the \cite{kummerow1993} is available in directory src of 
+https://github.com/mgrecu35/IET\_bookChapter/.  The reader is encouraged to pull the entire directory and examine the files in subdirectory examples.
+These files provide examples of radar and radiometer calculations using the concepts described in the chapter.  The examples require an working
+version of Python and some specific library.  Instructions on how the installation of the required library are provided in the README file
+in the examples directory.
+
+\subsection{Elements of optimal estimation theory}
+
+According to Gelb \cite{gelb1974}, an optimal estimator is a computational algorithm that processes measurements to deduce a minimum error (in accordance with some
+stated criterion of optimality). Based on this classical definition, any estimate that results from the minimization of an error-related objective function like the
+that in Eq. (\ref{eq:fobj}) is optimal. Nevertheless, because the minimization of observations errors is usually insufficient in deriving accurate estimates, additional
+terms called regularization terms \cite{doicu2010} need to be included in the objective functions.  An effective and meaningful type of regularization may 
+be achieved through the use of Bayes' Theorem \cite{maahn2020}.  Bayesian optimal estimation is preferable to other types of regularizations when the variables
+to be estimated have well-defined physical models and their statistical properties may be systematically studied independently of the estimation problem at hand.
+This is the case for combined radar radiometer retrievals because the distributions of PSD intercepts can be independently studied and characterized using
+ground observations and/or numerical models.
+
+Another element specific of optimal estimation procedure is their reliance on an optimization procedure. This is the reason why optimal estimation procedures
+are not always the method of choice in applications.  Specifically, in some applications, the optimization problem  associated with the estimation problem is
+so complicated that alternative (theoretically inferior) approaches are preferred.   
+
+The ensemble smoothing algorithm may be summarized as follows:
+\begin{itemize}
+    \item Generate an ensemble of PSD intercepts $\mathbf{N_w}$.
+    \item Derive radar-only precipitation estimation from the Ku-band radar observations.
+    \item Simulate radiometer, additional frequency radar (if multiple radar observations are available) and SRT PIA observations.
+    \item Apply an Ensemble Kalman Smoother
+    \begin{equation}
+        \mathbf{X=X+cov\langle X,Y \rangle (cov\langle Y,Y \rangle +R)^{-1} (Y_{obs}-Y(X))}
+    \end{equation}
+    to update the solution.
+\end{itemize}
+
+\subsection{Additional matters}
+\subsubsection{Non-uniform beam filling}
+\subsubsection{Multiple-scattering}
+\subsubsection{Radiance preprocessing}
+\section{Example of GPM combined observations and retrievals}
+\section{Summary and conclusions}
 %µdI(µ, φ)dτ= I(µ, φ) −˜ω4π2π01−1p(µ, φ; µ, φ)I(µ, φ) dµdφ
 
 %F(N_w)=\frac {1}{2}  W_Y^{-1} ) 

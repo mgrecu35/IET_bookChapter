@@ -240,10 +240,16 @@ Irrespective of whether single-frequency radar observations are included in the 
 be noted that the use of additional information enables in theory the derivation of more accurate estimates of additional variables, such
 as the normalized PSD intercepts, that in the worst case scenarios are simply set up based on their climatology. To estimate the state
 variables in Eq. (\ref{eq:fobj}), a computationally efficient model to simulation the observations $\mathbf{Y}$ and an optimization procedure
-are needed.  The simulation of air- and space-borne radiometer requires a procedure to solve the radiative transfer equation,
-\begin{equation}
-\mu\frac {dI(\mu,\phi)}{d\tau}=I(\mu,\phi) - \frac {\omega} {4\pi} \int_0^{2\pi}\int_{-1}^{1}p(\mu,\phi,\mu',\phi')I(\mu',\phi')d\mu'd\phi'
-\end{equation}
+are needed.  The simulation of air- and space-borne radiometer requires a procedure to solve the radiative transfer equation, which
+in the plane-parallel approximation reads \cite{kummerow1993}.
+\begin{multline}
+\mu k_{ext}\frac {dI(\mu,\phi)}{dz}=-I(\mu,\phi) + (1-a)B(T)+\\
+\frac {a} {4\pi} \int_0^{2\pi}\int_{-1}^{1}p(\mu,\phi,\mu',\phi')I(\mu',\phi')d\mu'd\phi'
+\end{multline}
+where $I(\mu,\phi)$ is the intensity in direction given by $\mu$ (the cosine of the angle between the actual direction and 
+the vertical axis) and azimuthal angle $\phi$, $k_{ext}$ is the extinction coefficient, $a$ is the scattering albedo (the ratio
+of the scattering coefficion to the extinction coefficients), $B(T)$ is the black body radiation emitted by the atmosphere at 
+temperature $T$ and the radiometer's frequency and $p(\mu,\phi,\mu',\phi')$ is the scattering function.
 
 %µdI(µ, φ)dτ= I(µ, φ) −˜ω4π2π01−1p(µ, φ; µ, φ)I(µ, φ) dµdφ
 

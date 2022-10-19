@@ -204,5 +204,10 @@ Marzano FS, Mugnai A, Panegrossi G, Pierdicca N, Smith EA, Turk J.
 \newblock Bayesian estimation of precipitating cloud parameters from combined measurements of spaceborne microwave radiometer and radar. 
 \newblock IEEE Transactions on Geoscience and Remote Sensing. 1999 Jan;37(1):596-613.
 
+\bibitem{kummerow1993}
+Kummerow C.
+\newblock On the accuracy of the Eddington approximation for radiative transfer in the microwave frequencies. 
+\newblock Journal of Geophysical Research: Atmospheres. 1993 Feb 20;98(D2):2757-65.
+
 \end{thebibliography}
 

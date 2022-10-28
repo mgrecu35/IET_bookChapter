@@ -302,6 +302,27 @@ The ensemble smoothing algorithm may be summarized as follows:
 \subsubsection{Multiple-scattering}
 \subsubsection{Radiance preprocessing}
 \section{Example of GPM combined observations and retrievals}
+Shown in figure \ref{fig:dataEx} is an example of DPR observed reflectivity and two of the associated brightness for a portion of
+orbit 5866 over the Kwajelein atoll. As apparent in the figure, at reflectivity observations tend to be significantly attenuated 
+at Ka-band. Some scans exhibit attenuation even at Ku-band.  As discussed in the previous sections, the reflectivity observations need
+to be corrected for attenuation to be usable in the derivation of precipitation estimates. Independent estimates of the PIA from the application
+of SRT method are extremely important in the attenuation correction process.  However, reliable SRT PIA estimates are not always available,
+especially when only single frequency radar-observations are available and the attenuation is low relative to the noise in the estimates.
+An assessment of the accuracy of the DPR PIA estimates from the single and dual frequency SRT method is provided in \cite{meneghini2015}.
+The 18.7-GHz brightness temperatures for orbit 5866 over the Kwajelein atoll are also shown in the bottom panel of Fig. \ref{fig:dataEx}.
+As explained in the previous section brightness temperatures at X-band and higher frequencies may be used to estimate provide alternative PIA
+estimates.  Such estimates are especially useful when the SRT PIA are unreliable and may be used in the estimation process along with SRT PIAs,
+because the optimal estimation theory can effectively incorporate information from multiple sources as long as their uncertainties are 
+properly specified.
+
+\begin{figure} \label{fig:dataEx}
+    \centerline{ }
+    \includegraphics[width=\textwidth]{kwajObs.20150311-S162503-E162626.005866.png}
+    
+    \caption{Example of observed DPR Ku-(top), Ka-band reflectivities (middle), and GMI 18.7-GHz brightness temperatures (bottom).}
+    \label{fig:normZ}
+    \end{figure}
+
 \section{Summary and conclusions}
 %µdI(µ, φ)dτ= I(µ, φ) −˜ω4π2π01−1p(µ, φ; µ, φ)I(µ, φ) dµdφ
 

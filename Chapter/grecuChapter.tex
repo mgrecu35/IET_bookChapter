@@ -258,7 +258,7 @@ the approximate solution \cite{liu1996}.
 
 The relevant coefficients in Eq. (\ref{eq:rte}) are determined through the integration of the absorption, scattering and phase function
 properties of individual particles for given observed or analytical PSDs. A file containing the integrated scattering properties used in 
-the GPM combined algorithm \cite{grecu2016} is available in netCDF format at:
+the Global Precipitation Measurement (GPM) combined algorithm \cite{grecu2016} is available in netCDF format at:\\
 https://github.com/mgrecu35/IET\_bookChapter/tree/main/lookupTables.
 The properties of four types of hydrometeors, i.e. rain, snow, graupel and hail, are included in the file. Properties are calculated assuming
 normalized gamma particle size distributions with $\mu$=2 and $N_w$=0.08cm$^{-4}$.  The mean mass diameter, precipitation rate,
@@ -302,8 +302,10 @@ The ensemble smoothing algorithm may be summarized as follows:
 \subsubsection{Multiple-scattering}
 \subsubsection{Radiance preprocessing}
 \section{Example of GPM combined observations and retrievals}
-Shown in figure \ref{fig:dataEx} is an example of DPR observed reflectivity and two of the associated brightness for a portion of
-orbit 5866 over the Kwajelein atoll. As apparent in the figure, at reflectivity observations tend to be significantly attenuated 
+Shown in figure \ref{fig:dataEx} is an example of observations from the Global Precipitation Measurement (GPM) mission \cite{gail2017}.
+Specifically, observed reflectivity from the Dual Frequency Precipitation Radar (DPR) and two of the associated brightness temperatures
+from the GPM Microwave Imager (GMI) \cite{gail2017} for a portion of orbit 5866 over the Kwajelein atoll are shown. 
+As apparent in the figure, at reflectivity observations tend to be significantly attenuated 
 at Ka-band. Some scans exhibit attenuation even at Ku-band.  As discussed in the previous sections, the reflectivity observations need
 to be corrected for attenuation to be usable in the derivation of precipitation estimates. Independent estimates of the PIA from the application
 of SRT method are extremely important in the attenuation correction process.  However, reliable SRT PIA estimates are not always available,
@@ -311,17 +313,33 @@ especially when only single frequency radar-observations are available and the a
 An assessment of the accuracy of the DPR PIA estimates from the single and dual frequency SRT method is provided in \cite{meneghini2015}.
 The 18.7-GHz brightness temperatures for orbit 5866 over the Kwajelein atoll are also shown in the bottom panel of Fig. \ref{fig:dataEx}.
 As explained in the previous section brightness temperatures at X-band and higher frequencies may be used to estimate provide alternative PIA
-estimates.  Such estimates are especially useful when the SRT PIA are unreliable and may be used in the estimation process along with SRT PIAs,
-because the optimal estimation theory can effectively incorporate information from multiple sources as long as their uncertainties are 
-properly specified.
+estimates.  Such estimates are especially useful when the SRT PIA estimates are unreliable. However, they may be used in the estimation process along 
+with SRT PIAs, because the optimal estimation theory can effectively incorporate information from multiple sources as long as their uncertainties are 
+properly specified.  The 18.7-GHz brightness temperatures are in qualitative agreement with the radar observations, i.e. they tend to increase
+in regions where the radar observations suggest high intensity precipitation and significant attenuation and attain their minimum values in regions
+where the radar does not detect any precipitation.  However, the 18.7-GHz exhibit significantly smoother along track variability than the radar
+observations.  This is because the GMI's footprint size at 18.7-GHz is significantly coarser than the DPR's footprint size. Specifically,
+the GMI's footprint resolution is 15.0 at 18.7-GHz \cite{gmi2015}, while that of the DPR is 4.5km.  As described in the previous section,
+various approaches such as deconvolution or the convolution of DPR footprint simulated brightness temperatures and the evaluation of brightness
+temperatures errors at the radiometer's footprint resolution may be used to account for the radar and radiometer's footprint size discrepancies.
 
 \begin{figure} \label{fig:dataEx}
     \centerline{ }
     \includegraphics[width=\textwidth]{kwajObs.20150311-S162503-E162626.005866.png}
     
     \caption{Example of observed DPR Ku-(top), Ka-band reflectivities (middle), and GMI 18.7-GHz brightness temperatures (bottom).}
-    \label{fig:normZ}
-    \end{figure}
+\end{figure}
+
+\subsection{Machine learning based evaluation}
+Insight into the utility of brightness temperature information into the estimation of the PIA may be derived using a Machine Learning (ML)
+approach.
+\begin{figure} \label{fig:ML_PIA}
+    \centerline{}
+    \includegraphics[width=\textwidth]{ML_PIA.png}
+    
+    \caption{(Left) Ku-band PIA estimates from the single frequency SRT analysis against Ku-band PIA estimates from the single frequency SRT analysis. Brightness-
+    temperature ML-based PIA estimates against reference PIA estimates from both single and dual-frequency SRT analysis.}
+\end{figure}
 
 \section{Summary and conclusions}
 %µdI(µ, φ)dτ= I(µ, φ) −˜ω4π2π01−1p(µ, φ; µ, φ)I(µ, φ) dµdφ

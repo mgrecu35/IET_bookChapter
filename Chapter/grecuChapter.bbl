@@ -22,7 +22,7 @@ Fujita M, Okamoto K, Yoshikado S, Nakamura K.
 \newblock Radio Science. 1985; 20(3); 631--642.
 
 \bibitem{smith1997}
-Smith E.
+Smith E, Turk FJ, Farrar M, Mugnai A, Xiang X.
 \newblock Estimating 13.8-GHz pathintegrated attenuation from 10.7-GHz brightness temperatures for the TRMM combined PRTMI precipitation algorithm.
 \newblock  Journal of Applied Meteorology. 1997; 36; 365--388.
 
@@ -249,6 +249,27 @@ Meneghini, R., Kim, H., Liao, L., Jones, J.A. and Kwiatkowski, J.M., 2015.
 \newblock An initial assessment of the surface reference technique applied to data from the dual-frequency precipitation radar (DPR) on the GPM satellite. 
 \newblock Journal of Atmospheric and Oceanic Technology, 32(12), pp.2281-2296.
 
+
+\bibitem{geron2022}
+Géron A.
+\newblock Hands-on machine learning with Scikit-Learn, Keras, and TensorFlow. 
+\newblock "O'Reilly Media, Inc."; 2022 Oct 4.
+
+\bibitem{seto2021}
+Seto S, Iguchi T, Meneghini R, Awaka J, Kubota T, Masaki T, Takahashi N. 
+\newblock The precipitation rate retrieval algorithms for the GPM Dual-frequency Precipitation Radar. 
+\newblock Journal of the Meteorological Society of Japan. Ser. II. 2021.
+
+\bibitem{deeplearning2016}
+Goodfellow I, Bengio Y, Courville A.
+\newblock  Deep learning.
+\newblock MIT press; 2016 Nov 10.
+
+
+\bibitem{tensorflow2015}
+Abdai M, et al.
+\newblock TensorFlow: Large-scale machine learning on heterogeneous systems,
+\newblock 2015. Software available from tensorflow.org.
 
 \end{thebibliography}
 

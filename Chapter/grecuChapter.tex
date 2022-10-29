@@ -331,8 +331,31 @@ temperatures errors at the radiometer's footprint resolution may be used to acco
 \end{figure}
 
 \subsection{Machine learning based evaluation}
-Insight into the utility of brightness temperature information into the estimation of the PIA may be derived using a Machine Learning (ML)
-approach.
+Insight into the utility of brightness temperature information in the estimation of the PIA may be derived using a Machine Learning (ML) \cite{geron2022}
+approach.  Specifically, a nonlinear regression may be derived to statistically estimate the PIA at the DPR frequencies from GMI brightness temperatures.
+This idea was already explored by \cite{smith1997} for the TRMM instruments, but instead of simulated brightness temperatures and PIA, 
+one can use actual GMI observations and accurate PIA estimates from the dual SRT \cite{meneghini2015}.  While PIA estimates derived from observed brightness
+temperature cannot be more accurate than dual SRT PIA estimates used in the development of the statistical relationships upon which they are based,
+they are extremely useful when accurate dual SRT PIA estimates are not available.  That is prior, to 21 May 2018, GPM dual frequency radar observations were
+collected only across half of entire single frequency swath \cite{seto2021}.  This is because the GPM Ka-band frequency radar collects observations in two modes,
+and both modes were focused on the near nadir portion of the scan prior to 21 May 2018 when a scan pattern change was implemented to enable the collection of 
+dual-frequency observations across the entire DPR swath. This means that dual SRT PIA estimates were not available across the entire DPR swath before the
+scan pattern change.  Therefore, a statistical relationship to estimate the dual SRT PIA from observed brightness temperatures 
+does not have only theoretical but also practical value.  Moreover, the Tropical Rainfall Measuring Mission (TRMM)  PR was a single frequency radar \cite{kummerow1998}
+and the fraction  of reliable SRT PIA estimates from single frequency observations is significantly smaller than that from dual frequency observations. Thus, a statistical 
+brightness temperature PIA relation is extremely beneficial to TRMM precipitation estimates.  At the same time, it is expected that future space borne radars
+will have Doppler capabilities but not dual Ku-Ka frequency capabilities. In short, there are multiple benefits in deriving and investigating a relationship
+between the observed GMI brightness temperatures and dual SRT PIA estimates, although such a relationship is not currently used in the GPM combined radar radiometer
+algorithm \cite{grecu2016}.
+
+Mathematically, the derivation of a parametric regression between two set of variables $\{\mathbf{X_1,X_2,...,X_n}\}$ and is $\{\mathbf{y_1,y_2,...,y_n}\}$ is 
+equivalent to the determination of function $f$ of variables $X$ and parameters $\Theta$ that maximizes the agreement between $f(\mathbf{ X_i},\Theta)$ and $y_i$.
+The agreement between $f(\mathbf{ X_i},\Theta)$ and $y_i$ is evaluated through typical mathematical functions called loss functions \cite{deeplearning2016}.
+Function $f$ consists of a sequential composition of rather elementary functions \cite{deeplearning2016}.
+Multiple software libraries that allow the definition of function $f$ and the determination of parameters $\Theta$ with minimum effort exist.  In this 
+chapter, the TensorFlow machine learning library \cite{tensorflow2015} is used.
+
+
 \begin{figure} \label{fig:ML_PIA}
     \centerline{}
     \includegraphics[width=\textwidth]{ML_PIA.png}

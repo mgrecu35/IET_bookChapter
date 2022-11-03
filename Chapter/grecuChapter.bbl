@@ -224,6 +224,16 @@ Gelb, A.
 \newblock Applied Optimal Estimation. 
 \newblock The M.I.T. Press.
 
+\bibitem{bertsekas2016}
+Bertsekas D. 
+\newblock Nonlinear Programming. 
+\newblock Athena Scientific; 2016 Sep 1.
+
+\bibitem{evensen2009}
+Evensen G. 
+\newblock Data assimilation: the ensemble Kalman filter. 
+\newblock Berlin: springer; 2009 Aug 17.
+
 \bibitem{doicu2010}
 Doicu A, Trautmann T, Schreier F. 
 \newblock Numerical regularization for atmospheric inverse problems

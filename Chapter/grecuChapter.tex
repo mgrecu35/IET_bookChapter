@@ -266,7 +266,7 @@ and precipitation water content associated with each entry are also included in 
 the Mie approach, while the snow properties are derived from DDA calculations. Additional information is provided in the README.md in the lookup table
 directory. An implementation of plane-parallel radiative solver of the \cite{kummerow1993} is available in directory src of 
 https://github.com/mgrecu35/IET\_bookChapter/.  The reader is encouraged to pull the entire directory and examine the files in subdirectory examples.
-These files provide examples of radar and radiometer calculations using the concepts described in the chapter.  The examples require an working
+These files provide examples of radar and radiometer calculations using the concepts described in the chapter.  The examples require a working
 version of Python and some specific library.  Instructions on how the installation of the required library are provided in the README file
 in the examples directory.
 
@@ -285,17 +285,44 @@ Another element specific of optimal estimation procedure is their reliance on an
 are not always the method of choice in applications.  Specifically, in some applications, the optimization problem  associated with the estimation problem is
 so complicated that alternative (theoretically inferior) approaches are preferred.   
 
-The ensemble smoothing algorithm may be summarized as follows:
+Although the most general optimal estimation theory framework would involve a state variable vector including all geophysical variables needed to simulate
+the radar and radiometer observations.  However, that would be problematic from practical perspective because the number of iterations required 
+to derive a solution would be large and make the approach computationally intensive. A more practical approach is to consider a reduced set of variables
+to be optimized and use the Ku-band radar observations as constraints \cite{grecu2002}.  Specifically, given that the Hitschfeld-Bordan approach 
+\cite{hitschfeld1954} provides a reliable solution as a function of the vertical distribution of the normalized intercept $\mathbf{N_w}$, one can
+derive explicit Hitschfeld-Bordan solutions and optimize them as a function of  $\mathbf{N_w}$ \cite{grecu2002}.  For combined radar-radiometer retrievals,
+the optimality criterion is the minimum of the objective function in (\ref{eq:fobj}) that measures the agreement between simulated and observed
+brightness temperatures, radar reflectivities at additional frequencies and PIA.
+
+Even though the reduced state variable formulation is simpler, the minimization of $F(\mathbf{N_w})$ is still a computationally challenging problem. This is
+true especially when the radiometer footprint size is significantly larger than that of the radar footprint size. Moreover, the simulated and observed
+brightness temperatures at some frequencies may be in poor agreement because of other variables, such as the surface emissivity, the vertical cloud water
+distribution, etc., and the state variable vector $\mathbf{X={N_w}}$ needs to be extended to include these variables.  Although still simpler than a
+problem that includes $\mathbf{D_m}$ as an independent variable and the observed Ku-band reflectivity as observations rather than constraints,
+the optimization associated with the combined retrieval is still rather a computationally difficult problem.  This is because the most efficient optimization
+problem solvers require the gradient calculations (i.e. the derivative of the objective function with respect to the state variable) \cite{bertsekas2016}.
+The naive evaluation of the gradient is computational expensive, but special techniques involving reverse evaluations may be used \cite{grecu2002}.
+The challenge with reverse evaluation is that they are not as intuitive as the forward implementation of the physical models involved in the retrievals
+and are prone to implementation errors if manually coded.  Software programs to automatically derive the reverse gradients from the forward objective 
+function implementation \cite{grecu2002}, but they may run into efficiency issues for objective functions involving complex forward models. An alternative
+to the analytical linearization of the objective function is the statistical linearization \cite{gelb1974}. A particular statistical linearization 
+approach  that has become extremely popular in the last 20 years is the Ensemble Kalman Filter \cite{evensen2009}. In a nutshell, the approach consists
+of statistically perturbing the state variables and calculating an ensemble of observations associated with the perturbed state variables.  Instead of
+explicitly evaluating the gradient of the objective function and using a gradient-based method to minimize it, a second order minimization formulation
+that derives the solution based on second order (quadratic) approximation is used.  The solution is formally identical to the extended 
+Kalman filter \cite{evensen2009}. However, the derivative of the physical models with respect to the state variables are not explicitly evaluated.
+Instead, the Kalman gain \cite{evensen2009} is directly derived and used in the solution. The specific steps may be summarized as follows:
 \begin{itemize}
-    \item Generate an ensemble of PSD intercepts $\mathbf{N_w}$.
+    \item Generate an ensemble of PSD intercepts $\mathbf{N_w}$ and other geophysical variables included in the state variable vector.
     \item Derive radar-only precipitation estimation from the Ku-band radar observations.
     \item Simulate radiometer, additional frequency radar (if multiple radar observations are available) and SRT PIA observations.
     \item Apply an Ensemble Kalman Smoother
     \begin{equation}
         \mathbf{X=X+cov\langle X,Y \rangle (cov\langle Y,Y \rangle +R)^{-1} (Y_{obs}-Y(X))}
     \end{equation}
-    to update the solution.
+    to update the solution, where $\mathbf(R)$ is the observational and modeling uncertainty.
 \end{itemize}
+The ensemble approach is used in the GPM combined algorithm.
 
 \subsection{Additional matters}
 \subsubsection{Non-uniform beam filling}

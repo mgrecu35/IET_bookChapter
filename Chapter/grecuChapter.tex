@@ -2,6 +2,11 @@
 \documentclass[10pt]{ietbook}
 \usepackage{listings}
 %\usepackage{breqn}
+\lstset{
+  language=python,
+  %%basicstyle=\medium,
+  breaklines=true
+  }
 \begin{document}
 
 %For RH Book title
@@ -202,6 +207,29 @@ reflectivities \cite{ferreira2001}. This is because systematically different mea
 in biased attenuation correction,  but also in biased precipitation estimates due to the application of a biased reflectivity
 precipitation relationship.  Therefore, the benefit of using $N_w$-based relationships is twofold \cite{ferreira2001}.
 
+A simple implementation of the Hitschfeld-Bordan solution in the Python programming language is given listing \ref{HBlist}.
+\begin{lstlisting}[caption={Python implementation of the Histchfeld-Bordan solution.},captionpos=b,label={HBlist}]
+def hb(Zm,dN,alpha,beta,dr):
+    q=0.2*np.log(10)
+    eps=dN**(1-beta)
+    zeta=q*beta*eps*alpha*10**(0.1*Zm*beta)*dr
+    zetaSum=zeta.cumsum()[-1]
+    if zetaSum>0.995:
+        f=0.995/zetaSum
+    else:
+        f=1
+    Zc=Zm-10/beta*np.log10(1-f*zeta.cumsum())
+    pia=-10/beta*np.log10(1-f*zeta.cumsum())
+    return zc,pia,f
+\end{lstlisting}
+where Zm and Zc are the observed and attenuation corrected reflectivity vectors, alpha and beta are $\alpha$ and $\beta$, dN is
+the $dN_w$ and dr is the range bin size.  Although this implementation is simple to facilitate comprehension, it has all the ingredients
+required for practical application.  In practice, it is possible that $\zeta (r_s) =q dN_w^{1-\beta} \int_0^{r_s}\alpha Z_m^\beta(s)ds \geq 1$. In 
+such situations, the Hitschfeld Bordan approach does not work for ranges beyond the range value where $\zeta (r)=1$.  This behavior, which is 
+a consequence of the  accumulations of errors in the attenuation estimation and correction process, may be mitigated by simply rescaling 
+$\zeta (r)$ by a factor $f$ that makes $f \zeta{r}$ smaller than 1.0 for any $r<r_s$.  To keep the solution physically consistent the 
+relative normalized PSD intercept $dN_w$ needs to be rescaled $f^{\frac 1 {1-\beta}}$. 
+
 It should be noted that because neither the SRT estimates nor the Hitschfeld-Bordan predictions of PIA are perfect,
 equating them exactly is suboptimal because it attributes various types of uncertainties to variability in the $N_w$.
 A better approach is to adjust $N_w$ such that the final $PIA_{HB}$ is consistent with both the uncertainties in its
@@ -268,7 +296,32 @@ directory. An implementation of plane-parallel radiative solver of the \cite{kum
 https://github.com/mgrecu35/IET\_bookChapter/.  The reader is encouraged to pull the entire directory and examine the files in subdirectory examples.
 These files provide examples of radar and radiometer calculations using the concepts described in the chapter.  The examples require a working
 version of Python and some specific library.  Instructions on how the installation of the required library are provided in the README file
-in the examples directory.
+in the examples directory.  An example of Python code to derive Ka-band radar and precipitation properties as a function of the true Ku-band 
+reflectivity using information stored in the lookup tables is show in listing \ref{LTlist}
+\begin{lstlisting}[caption={Python implementation of the Histchfeld-Bordan solution.},captionpos=b,label={LTlist}]
+def getRainProp(zKuTrue,log10dnw,lookUpTable):
+    if zKuc>12:
+        ibin=int((zKuTrue-10*log10dnw+12)/0.25)
+        if ibin<=0:
+            ibin=0
+            dnw=(zc+12)/10.
+        if ibin>=288:
+            ibin=0
+            dnw=(zc-lookUpTable.zKaR[288])/10.
+        zKa=lookUpTable.zKaR[ibin]+10*log10dnw
+        attKa=lookUpTable.attKaR[ibin]*10**log10dnw
+        pRate=lookUpTable.rainRate[ibin]*10**log10dnw
+    else:
+        zKa=-99
+        attKa=0
+        pRate=0
+    return zKa,attKa,pRate
+\end{lstlisting}
+where zKuTrue is the true Ku-band reflectivity, log10dnw is the log10 of the relative $N_w$ intercept and lookUpTable is the object containing scattering
+and precipitation information.  The Ku-band reflectivity are stored sequentially in 0.25 dB apart entries starting at -12 dBZ and ending at 60 dBZ.  Each Ku-band
+reflectivity entry contains the associated PSD information (e.g. $D_m$, precipitation rate, precipitation water content, etc.), the reflectivity and attenuation
+at Ka-band, the extinction and scattering coefficients, and the asymmetry factor at all radiometer frequency and for all phases. This makes the navigation of
+the lookup table straightforward as apparent in listing \ref{LTlist}.
 
 \subsection{Elements of optimal estimation theory}
 
@@ -325,9 +378,18 @@ Instead, the Kalman gain \cite{evensen2009} is directly derived and used in the 
 The ensemble approach is used in the GPM combined algorithm.
 
 \subsection{Additional matters}
-\subsubsection{Non-uniform beam filling}
-\subsubsection{Multiple-scattering}
+\subsubsection{Non-uniform beam filling and multiple scattering}
+
+
+\begin{figure} \label{fig:NUBF}
+    \centering
+    \centerline{ }
+    \includegraphics[width=0.6\textwidth]{retrievedZKa.png}
+    
+    \caption{Example of observed DPR Ku-(top), Ka-band reflectivities (middle), and GMI 18.7-GHz brightness temperatures (bottom).}
+\end{figure}
 \subsubsection{Radiance preprocessing}
+
 \section{Example of GPM combined observations and retrievals}
 Shown in figure \ref{fig:dataEx} is an example of observations from the Global Precipitation Measurement (GPM) mission \cite{gail2017}.
 Specifically, observed reflectivity from the Dual Frequency Precipitation Radar (DPR) and two of the associated brightness temperatures

@@ -375,22 +375,55 @@ Instead, the Kalman gain \cite{evensen2009} is directly derived and used in the 
     \end{equation}
     to update the solution, where $\mathbf(R)$ is the observational and modeling uncertainty.
 \end{itemize}
-The ensemble approach is used in the GPM combined algorithm.
+The ensemble approach is used in the GPM combined algorithm \cite{grecu2016}.
 
 \subsection{Additional matters}
 \subsubsection{Non-uniform beam filling and multiple scattering}
+It goes without saying that the optimal estimation theory is not likely to result in unbiased estimates if the models involved in the estimation are biased. 
+Specifically, models to calculate space-borne radar observations at Ka-band need to account for potential non-uniform beam filling (NUBF) and multiple scattering 
+effects to mitigate biases in the estimates. This is because non-homogeneity in the distribution of precipitation in the radar observing volumes do not
+cancel out in the observation space due to the fact that the energy backscattered by precipitation particles in a certain volume is not linearly related
+to the amount of precipitation in that volume.  Moreover, energy backscattered by precipitation in atmospheric volumes relatively close to one another may 
+be subject to significantly different degrees of attenuation \cite{iguchi2009}, which makes NUBF effects increase with frequency.  To mitigate NUBF effects,
+Monte Carlo methodologies based on the downscaling of observations and retrievals to finer scale may be used. Such a methodology has been developed for 
+and implemented in the GPM combined algorithm \cite{grecu2016}. Specifically, given a profile of Ku-band radar reflectivity observations, a set of profiles is 
+statistically generated such that their average in the natural space yields back the original profile. Hitschfeld Bordan precipitation estimates are derived for 
+every statistically generated Ku-band observation profile and the associated Ka-band radar observations are calculated and aggregated back to the original
+radar resolution. It was found that, depending on the degree of assumed variability with the radar footprint the resulting Ka-band reflectivity profiles may
+be significantly different from the one calculated assuming no variability within the radar observing volumes \cite{grecu2016}.  Similar behaviour was found
+for the calculated Ka-band PIA.  The parameters of the downscaling model developed in \cite{grecu2016} were found to be biased and updated in subsequent
+versions of the GPM combined algorithm.  Moreover, it was found that multiple scattering effects, that consist of multiple interactions of radar emitted energy
+with precipitation particles before reaching the radar receiver, may be significant at Ka-band. A computationally efficient model to account for
+multiple scattering effects in radar observations was developed by Hogan and Battaglia \cite{hogan2008}.  The model can readily calculate radar
+observations accounting for higher interactions between the energy emitted by the radar and precipitation particles as a function of
+precipitation electromagnetic scattering properties such as the extinction and scattering coefficients, the asymmetry factor and the 
+unattenuated reflectivity. These properties may be obtained from the scattering lookup tables using procedures similar to that outlined in listing \ref{LTlist}.
 
+An example of GPM Ku-band radar observed reflectivity profile is shown in \ref{fig:NUBF}.  The Ka-band reflectivity profiles derived from the Ku-band
+estimates using three different models are also shown in the figure.  The first model, indicated as $Z_{sim}(Ka)$ in the figure, is a simple single-scattering 
+model that does not account for either NUBF or multiple scattering effects.  The second model, $Z_{NUBFsim}(Ka)$, accounts for NUBF effects, while the third,
+$Z_{MS}(Ka)$ accounts for multiple scattering effects.  Note that the difference between the model that accounts for multiple scattering and those that do not
+are extremely large.  In the absence of such a model, the optimal estimation framework would interpret the differences between simulated and observed Ka-band
+reflectivities as severe attenuation at Ka-band and would adjust the solution to one characterized by significantly less attenuation.  The adjusted solution
+would be associated with significantly smaller precipitation rates (or equivalent water contents).  In reality, while the attenuation is indeed severe at 
+Ka-band, the associated reflectivities are significantly enhanced by multiple scattering effects.  The impact of NUBF on simulated reflectivities is not 
+as significant as that of multiple scattering for this particular example, but it may be for shallower but more intense precipitation.  Moreover, the NUBF
+model has an impact on the interpretation of the PIA estimated using the SRT.  Specifically, the apparent SRT PIA may be 20\% to 50\% smaller than the value
+associated with uniform extinction within the radar observing volumes.
 
-\begin{figure} \label{fig:NUBF}
-    \centering
+\begin{figure}  \label{fig:NUBF}
+\centering
     \centerline{ }
     \includegraphics[width=0.6\textwidth]{retrievedZKa.png}
     
-    \caption{Example of observed DPR Ku-(top), Ka-band reflectivities (middle), and GMI 18.7-GHz brightness temperatures (bottom).}
+    \caption{Example of Ka-band reflectivity profile calculated from  Ku-band-only precipitation estimates. Multiple Ka-band reflectivity models are
+    included, i.e. single scattering model, single model accounting for NUBF, and multiple scattering model.}
 \end{figure}
 \subsubsection{Radiance preprocessing}
-
-\section{Example of GPM combined observations and retrievals}
+As previously mentioned, a particular challenge in the derivation of precipitation estimates from combined radar and radiometer observations stems
+in the fact that the radiometer footprint size is significantly larger than that of the radar. To mitigate this challenge, one may 
+\section{GPM combined observations and retrievals}
+\subsection{Observations}
 Shown in figure \ref{fig:dataEx} is an example of observations from the Global Precipitation Measurement (GPM) mission \cite{gail2017}.
 Specifically, observed reflectivity from the Dual Frequency Precipitation Radar (DPR) and two of the associated brightness temperatures
 from the GPM Microwave Imager (GMI) \cite{gail2017} for a portion of orbit 5866 over the Kwajelein atoll are shown. 

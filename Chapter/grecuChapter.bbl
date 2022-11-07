@@ -244,6 +244,16 @@ Maahn M, Turner, DD, Löhnert U, Posselt DJ, Ebell K, Mace GG,  Comstock JM.
 \newblock Optimal Estimation Retrievals and Their Uncertainties: What Every Atmospheric Scientist Should Know.
 \newblock Bulletin of the American Meteorological Society. 2020; 101(9), E1512-E1523. 
 
+\bibitem{iguchi2009}
+Iguchi T, Kozu T, Kwiatkowski J, Meneghini R, Awaka J, Okamoto KI. 
+\newblock Uncertainties in the rain profiling algorithm for the TRMM precipitation radar. 
+\newblock Journal of the Meteorological Society of Japan. Ser. II. 2009 Mar 31;87:1-30.
+
+\bibitem{hogan2008}
+Hogan, R. J., and A. Battaglia
+\newblock Fast lidar and radar multiple-scattering models: Part 2: Wide-angle scattering using the time-dependent two-stream approximation. 
+\newblock J. Atmos. Sci. 2008; 65, 3636-3651
+
 \bibitem{gail2017}
 Skofronick-Jackson G, Petersen WA, Berg W, Kidd C, Stocker EF, Kirschbaum DB, Kakar R, Braun SA, Huffman GJ, Iguchi T, Kirstetter PE. 
 \newblock The Global Precipitation Measurement (GPM) mission for science and society. 

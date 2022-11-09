@@ -219,7 +219,7 @@ in biased attenuation correction,  but also in biased precipitation estimates du
 precipitation relationship.  Therefore, the benefit of using $N_w$-based relationships is twofold \cite{ferreira2001}.
 
 A simple implementation of the Hitschfeld-Bordan solution in the Python programming language is given listing \ref{HBlist} and
-available online at https://tinyurl.com/COMBALG.
+available online at \\https://tinyurl.com/COMBALG.
 \begin{lstlisting}[caption={Python implementation of the Histchfeld-Bordan solution.},captionpos=b,label={HBlist}]
 def hb(Zm,dN,alpha,beta,dr):
     q=0.2*np.log(10)
@@ -312,7 +312,7 @@ These files provide examples of radar and radiometer calculations using the conc
 version of Python and some specific libraries.  Instructions on how the installation of the required libraries are provided in the README file
 in the examples directory.  An example of Python code to derive Ka-band radar and precipitation properties as a function of the true Ku-band 
 reflectivity using information stored in the lookup tables is show in listing \ref{LTlist}
-\begin{lstlisting}[caption={Python implementation of the Histchfeld-Bordan solution.},captionpos=b,label={LTlist}]
+\begin{lstlisting}[caption={Python implementation of a scattering lookup table interface function.},captionpos=b,label={LTlist}]
 def getRainProp(zKuTrue,log10dnw,lookUpTable):
     if zKuc>12:
         ibin=int((zKuTrue-10*log10dnw+12)/0.25)
@@ -530,7 +530,7 @@ single and differential SRT estimates.  This is not surprising, given that the r
 \end{figure}
 
 \subsection{Combined estimates}
-Shown in Fig. \ref{fig:ML_PIA} is differential PIA from the ML model described in the previous section along with 
+Shown in the top panel of Fig. \ref{fig:ML_PIA} is differential PIA from the ML model described in the previous section along with 
 the estimates from the differential and single frequency SRT methods.  The official DPR Version 7 differential PIA 
 estimates (labeled as DPR in the figure) along with a range of estimates (labeled HB) derived using the Histchfeld Bordan 
 approach implemented in listing \ref{HBlist}
@@ -538,20 +538,39 @@ and supporting routines in the chapter code repository are also shown in Fig. \r
 the various estimates are generally in good agreement, with the exception of two regions around relative scan number 20 and 60.
 These regions are characterized by large attenuation, which is apparent in the Ka-band observations shown in
 Fig. \ref{fig:dataEx}. As previously mentioned, when the attenuation is very large, neither differential SRT-based 
-nor brightnes temperature based PIA estimates are reliable due to the saturation effects.  That is observations involved
+nor brightness temperature based PIA estimates are reliable due to the saturation effects.  That is observations involved
 in the estimation process do not exhibit changes in magnitude when the integrated attenuation exceeds a certain threshold.
 In such situation the single frequency SRT PIA estimates are most reliable. While an optimal estimation framework such
 that the ensemble methodology outlined in the previous section can incorporate multiple estimates of the same variable,
 the specification of the uncertainties associated with those estimates is challenging in practice because errors tend
-to have distributions signficantly more complex than a normal distribution. The Hitchfeld-Bordan approach results in a 
-a distribution of estimates because any specific assumption regarding the PSD intercept $N_w$ results in particular PIA
-precipitation profile estimates.
+to have distributions significantly more complex than a normal distribution. However, irrespective of how uncertainties
+are specified and which estimate is deemed the most reliable, PIA information is essential in narrowing down the distribution 
+of possible Hitschfeld-Bordan precipitation and associated PIA estimates.
+
+Shown in the bottom panel of Fig. \ref{fig:ML_PIA} are the surface precipitation estimates associated with Hitschfeld-Bordan solutions shown
+in the top panel of the figure and a surface precipitation estimate derived by adjusting the PSD $N_w$ to a value that maximizes the
+agreement between the associated PIA and the estimates from the ML model and the Ku-band SRT method. The Ku-band SRT PIA estimates are incorporated
+only in the estimation of convective precipitation.  In this illustrative example, $N_w$ is assumed vertically constant in the rain phase,
+and increasing with height in the ice phase using a relation derived from PSD observations from the IMPACTS field campaign \cite{impacts2022}.  
+The Hitschfeld-Bordan PIA is calculated as a function of $N_w$, i.e. $PIA_{HB}(N_w)$, and
+$N_w$ is updated based on the ML PIA estimate (and the Ku-band SRT PIA estimates for convective rain) using the methodology described in the
+previous section.  As apparent in the figure, the range of possible surface precipitation estimates that is broad.  The climatology of $Nw$
+varies significantly around the globe and as a function of season, and just setting $Nw$ based on its climatology results in large uncertainties.
+This is why independent information on PIA is crucial in mitigating biases and uncertainties in space borne radar retrievals. 
+As demonstrated in this and the previous subsection, brightness temperature observations may be used to derive reliable PIA estimates and significantly
+impact the space borne radar precipitation estimates when reliable SRT PIA (or differential SRT PIA) estimates do not exist.  Differential SRT PIA estimates
+are generally reliable over oceans, but not all space borne Ku-band radar observations are associated with collocated Ka-band radar observations.
+This is the case for TRMM radar observations and GPM radar observations outside the matched scan before the scan pattern change. The brightness temperature
+observations are expected to be extremely consequential for such radar observations.
 
 \begin{figure}\label{fig:retrievals}
     \centerline{}
     \includegraphics[width=\textwidth]{retPIA.png}
     
-    \caption{PIAs and Retrievals.}
+    \caption{(Top) PIA estimates from the ML model, the official DPR version 7 algorithm, the differential and single frequency (Ku)
+    SRT method.  A range of Histchfeld-Bordan PIA derived using $N_w$ two times larger and smaller than the reference value of 0.08cm$^4$ is also
+    shown.(Bottom). The surface precipitation estimates from the Histchfeld-Bordan approach associated with the PIA shown in the top panel
+    and the optimal surface precipitation estimate.}
 \end{figure}
 
 \section{Summary and conclusions}

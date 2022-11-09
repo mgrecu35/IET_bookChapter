@@ -20,14 +20,25 @@ William S. Olson\thanks{GESTAR-II,UMBC and NASA GSFC} }
 
 \chapter{Satellite Combined Radar-Radiometer algorithms}
 
-Some abstract here.
+This chapter describes the basic components used in algorithms to derive precipitation estimates from satellite combined radar and radiometer observations.
+Specifically, the basic mathematical relationships connecting precipitation particle size distributions to radar and radiometer observations 
+are succinctly, but comprehensively, described.  In addition, codes to calculate radar and radiometer observations from normalized gamma size 
+distributions and using lookup tables of electromagnetic properties at the GPM radar and radiometer's frequency are provided in a
+code repository located at https://tinyurl.com/COMBALG. These codes along with the elements of the optimal estimation theory presented in the chapter
+may be used by the user to assemble simplified but effective radar radiometer precipitation estimation algorithms.  Examples of retrievals and 
+considerations regarding the development of combined algorithm for future satellite missions are also presented in the chapter.
+
+\index{fa series index text index!bcde index text index text index text!cdef index text index text} 
+\index{fb series index text index text index!bcde index text index text!cdef index text}
+\index{fb series index text index text index!cdef index text index text index text}
+
 \section{Introduction}
 
 The benefit of incorporating radiometer observations into methodologies that estimate precipitation from
 space-borne radar observations was first realized by \cite{weinman90}. Specifically, due to size and weight limitations on antennae, space-borne radars 
 operate at frequencies that make observations subject to attenuation. While
-attenuation correction methodologies exist, e.g. \cite{hitschfeld1954}, variability in the size distribution of
-precipitation particles within the radar observing volume makes the attenuation correction process highly uncertain.
+attenuation correction methodologies exist, e.g. \cite{hitschfeld1954}, variability in the distribution of
+precipitation particle sizes within the radar observing volume makes the attenuation correction process highly uncertain.
 At the same time, it had been recognized \cite{Meneghini1983} that independent information regarding the Path-Integrated-Attenuation (PIA) 
 may be used to reduce uncertainties in the attenuation correction process. PIA information
 independent of the radar measurements used in the attenuation correction process may be derived from the analysis
@@ -41,7 +52,7 @@ radiometer observations over water surfaces at frequencies not associated with s
 This is because the emissivity of water surface is low and rain drops in the radiometer observing volume result in warmer brightness temperatures.  The departure from the
 brightness temperature value expected in clear skies may be used to estimate the equivalent PIA at the radar operating frequency \cite{weinman90}.  The initial study of
 Weinman et al. \cite{weinman90} provided a relationship between coincident radiometer observations at X-band and the associated PIA at X-band (9.6-GHz). Subsequent work 
-Smith et al. \cite{smith1997} was carried out to determine a relationship between the PIA at Ku-band (13.8 GHz) and coincident radiometer observations 10.7-GHz. 
+by Smith et al. \cite{smith1997} was carried out to determine a relationship between the PIA at Ku-band (13.8 GHz) and coincident radiometer observations 10.7-GHz. 
 This relationship was developed for use in the Tropical Rainfall Measuring Mission (TRMM) \cite{kummerow1998} combined radar-radiometer algorithm \cite{haddad1997}.
 
 However, although the relationships between low frequency brightness temperatures and the radar PIA at X- and Ku-band are well-defined and unambiguous, the use of satellite
@@ -110,7 +121,7 @@ of ice and air characterized by an equivalent dielectric constant \cite{battan19
 ice particles large compared to the radar wavelength \cite{tyynela2011,liu2004,kuo2016}. To address the need for accurate backscattering
 calculations (and electromagnetic scattering properties in general), several research groups started developing databases of ice particles
 and associated scattering properties using the Discrete Dipole Approximation (DDA) approach \cite{dda1994} 
-and made them available to the science community at large \cite{liu2004,kuo2016}.  The drawback of DDA approach is its computational
+and made them available to the science community at large \cite{liu2004,kuo2016}.  The drawback of the DDA approach is its computational
 cost. Specifically, the complexity of ice particle shapes precludes the use of efficient spectral solvers that make use of analytical formulae
 that reduce the original equations to significantly simpler equations solvable in the Fourier space \cite{spectral_matlab}.  As a consequence, 
 intensive numerical
@@ -120,7 +131,7 @@ accurate estimates of the electromagnetic properties of ice particles at microwa
 scattering calculations based on the DDA or other numerically intensive methods are preferable, but such calculations are not available at 
 all frequencies, especially for new sub-millimeter wavelength radiometers that have been only recently developed or are being developed for
 future space missions.  For such frequencies and very large ice particles relative to the instrument's wavelength,  the Rayleigh-Gans 
-approximation of Hogan et al. \cite{hogan2017}  that together with the Mie-based approach of \cite{bhmie2008} and absorption models (e.g.
+approximation of Hogan et al. \cite{hogan2017} together with the Mie-based approach of \cite{bhmie2008} and absorption models (e.g.
 Rosenkranz \cite{rosenkranz1998}) provide the ingredients necessary to simulate space-borne radar and radiometer observations from 
 atmospheric geophysical variables.
 
@@ -142,7 +153,7 @@ observed PSDs and the associated precipitation water content exhibit significant
 from single frequency reflectivity observations highly uncertain.  Shown in the left-hand panel of Fig. \ref{fig:normZ} is the joint distribution of 
 IWC and associated reflectivity at Ku-band calculated using PSD observations from the NASA IMPACTS field experiment \cite{impacts2022}.  As apparent 
 in the panel, the joint distribution is broad with a broad range of IWC values associated with any given reflectivity.  However, normalization of 
-both IWC and reflectivity by the associated $N_w$ makes the resulting joint ($IWC/N_w$, $Z(Ku)/N_w$) very narrow and close to a one-to-one function.
+both IWC and reflectivity by the associated $N_w$ makes the resulting joint ($IWC/N_w$, $Z(Ku)/N_w$) distribution very narrow and close to a one-to-one function.
 This means that $IWC/N_w$ can be accurately predicted from $Z(Ku)/N_w$.  While normalization by itself does not eliminate uncertainties, because one
 needs information about $N_w$ to derive a closed form solution for $IWC$, it does provide a general and physical consistent 
 framework to investigate and mitigate uncertainties in space-borne radar and radiometer retrievals.  This will be explained in detail in the next 
@@ -207,7 +218,8 @@ reflectivities \cite{ferreira2001}. This is because systematically different mea
 in biased attenuation correction,  but also in biased precipitation estimates due to the application of a biased reflectivity
 precipitation relationship.  Therefore, the benefit of using $N_w$-based relationships is twofold \cite{ferreira2001}.
 
-A simple implementation of the Hitschfeld-Bordan solution in the Python programming language is given listing \ref{HBlist}.
+A simple implementation of the Hitschfeld-Bordan solution in the Python programming language is given listing \ref{HBlist} and
+available online at https://tinyurl.com/COMBALG.
 \begin{lstlisting}[caption={Python implementation of the Histchfeld-Bordan solution.},captionpos=b,label={HBlist}]
 def hb(Zm,dN,alpha,beta,dr):
     q=0.2*np.log(10)
@@ -223,7 +235,8 @@ def hb(Zm,dN,alpha,beta,dr):
     return zc,pia,f
 \end{lstlisting}
 where Zm and Zc are the observed and attenuation corrected reflectivity vectors, alpha and beta are $\alpha$ and $\beta$, dN is
-the $dN_w$ and dr is the range bin size.  Although this implementation is simple to facilitate comprehension, it has all the ingredients
+the $dN_w$ and dr is the range bin size.  Although this implementation is deliberately simple to facilitate comprehension, 
+it has all the ingredients
 required for practical application.  In practice, it is possible that $\zeta (r_s) =q dN_w^{1-\beta} \int_0^{r_s}\alpha Z_m^\beta(s)ds \geq 1$. In 
 such situations, the Hitschfeld Bordan approach does not work for ranges beyond the range value where $\zeta (r)=1$.  This behavior, which is 
 a consequence of the  accumulations of errors in the attenuation estimation and correction process, may be mitigated by simply rescaling 
@@ -240,7 +253,7 @@ et al. \cite{ferreira2001} who made the connection between SRT estimates and $N_
 
 The use of normalized $k-Z$ and $Z$-precipitation relation is beneficial even when SRT PIA estimates are not available
 but additional sources of information, such as coincident radiometer observations are available.  Specifically, if a
-set of observations $Y_obs$ independent of the radar observations used in a radar-only precipitation profiling algorithm,
+set of observations $\mathbf{Y_{obs}}$ independent of the radar observations used in a radar-only precipitation profiling algorithm,
 one may tune the $N_w$ assumptions made in the radar-only profiling algorithm to maximize the agreement between
 them and their prediction from the radar-only estimates.  Or, more precisely, an objective function may be defined as 
 \begin{multline} \label{eq:fobj}
@@ -251,18 +264,19 @@ where $\mathbf{Y(Z_m(N_w))}$ is a numerical model that predicts observations $\m
 radar observations $\mathbf{Z_m}$ and the normalized $\mathbf{N_w}$ intercepts. Matrix $\mathbf{W_Y^{-1}}$ quantifies uncertainties
 in model $\mathbf{Y}$, while $\mathbf{N_w^0}$ and $\mathbf{W_N}$ are the climatological values of $\mathbf{N_w}$ and their 
 associated covariance matrix.
-Note that $\mathbf{Y_{obs}}$ may consist of any useful combination of space- or ground-based observations, while the set of $N_w$ may
+Note that $\mathbf{Y_{obs}}$ may consist of any useful combination of space- or ground-based observations, while the set of $\mathbf{N_w}$ may
 need to be extended to include other geophysical variables relevant in the prediction of $\mathbf{Y}$.  From the mathematical perspective,
 the problem of determining $\mathbf{N_w}$ from $\mathbf{Y_{obs}}$ is generally ill-posed and additional climatological, or 
 "a priori" in statistical terminology, information is needed to derive a unique solution \cite{tarantola2005}.  The additional information
 is provided by the second term of the objective function in Eq. (\ref{eq:fobj}). An implementation of a combined radar-radiometer estimation
 algorithm based on Eq. (\ref{eq:fobj}) and applicable to airborne observations was developed by Grecu and Anagnostou \cite{grecu2002}.
-An evaluation based on synthetic observations derived from cloud resolving model simulations indicated the superiority of the relative
+An evaluation based on synthetic observations derived from cloud resolving model simulations indicated the superiority of combined retrievals
+relative
 to radar-only retrievals.  A potentially more general approach, i.e. considering a larger set of state variables, but computationally 
 more intensive and prone to challenges when used in operational environment had been developed by Marzano et al. \cite{marzano1999}.
 Specifically, the state variables in \cite{marzano1999} included the precipitation water contents while the radar observations were 
 not implicitly satisfied but included in the optimization problem.  A comprehensive discussion on why an approach with a reduced number
-of variables and the radar observations at a given frequency automatically satisfied in provided in \cite{grecu2002}.
+of variables and the radar observations at a given frequency automatically satisfied is beneficial is provided in \cite{grecu2002}.
 
 Irrespective of whether single-frequency radar observations are included in the objective function or automatically satisfied, it should
 be noted that the use of additional information enables in theory the derivation of more accurate estimates of additional variables, such
@@ -295,7 +309,7 @@ the Mie approach, while the snow properties are derived from DDA calculations. A
 directory. An implementation of plane-parallel radiative solver of the \cite{kummerow1993} is available in directory src of 
 https://github.com/mgrecu35/IET\_bookChapter/.  The reader is encouraged to pull the entire directory and examine the files in subdirectory examples.
 These files provide examples of radar and radiometer calculations using the concepts described in the chapter.  The examples require a working
-version of Python and some specific library.  Instructions on how the installation of the required library are provided in the README file
+version of Python and some specific libraries.  Instructions on how the installation of the required libraries are provided in the README file
 in the examples directory.  An example of Python code to derive Ka-band radar and precipitation properties as a function of the true Ku-band 
 reflectivity using information stored in the lookup tables is show in listing \ref{LTlist}
 \begin{lstlisting}[caption={Python implementation of the Histchfeld-Bordan solution.},captionpos=b,label={LTlist}]
@@ -330,17 +344,17 @@ stated criterion of optimality). Based on this classical definition, any estimat
 that in Eq. (\ref{eq:fobj}) is optimal. Nevertheless, because the minimization of observations errors is usually insufficient in deriving accurate estimates, additional
 terms called regularization terms \cite{doicu2010} need to be included in the objective functions.  An effective and meaningful type of regularization may 
 be achieved through the use of Bayes' Theorem \cite{maahn2020}.  Bayesian optimal estimation is preferable to other types of regularizations when the variables
-to be estimated have well-defined physical models and their statistical properties may be systematically studied independently of the estimation problem at hand.
+to be estimated have well-defined physical meanings and their statistical properties may be systematically studied independently of the estimation problem at hand.
 This is the case for combined radar radiometer retrievals because the distributions of PSD intercepts can be independently studied and characterized using
 ground observations and/or numerical models.
 
-Another element specific of optimal estimation procedure is their reliance on an optimization procedure. This is the reason why optimal estimation procedures
+Another element specific of optimal estimation procedures is their reliance on an optimization procedure. This is the reason why optimal estimation procedures
 are not always the method of choice in applications.  Specifically, in some applications, the optimization problem  associated with the estimation problem is
 so complicated that alternative (theoretically inferior) approaches are preferred.   
 
-Although the most general optimal estimation theory framework would involve a state variable vector including all geophysical variables needed to simulate
-the radar and radiometer observations.  However, that would be problematic from practical perspective because the number of iterations required 
-to derive a solution would be large and make the approach computationally intensive. A more practical approach is to consider a reduced set of variables
+The most general optimal estimation theory framework involves a state variable vector including all geophysical variables needed to simulate
+the radar and radiometer observations.  However, that is problematic from practical perspective because the number of iterations required 
+to derive a solution is large and make the approach computationally intensive. A more practical approach is to consider a reduced set of variables
 to be optimized and use the Ku-band radar observations as constraints \cite{grecu2002}.  Specifically, given that the Hitschfeld-Bordan approach 
 \cite{hitschfeld1954} provides a reliable solution as a function of the vertical distribution of the normalized intercept $\mathbf{N_w}$, one can
 derive explicit Hitschfeld-Bordan solutions and optimize them as a function of  $\mathbf{N_w}$ \cite{grecu2002}.  For combined radar-radiometer retrievals,
@@ -351,13 +365,13 @@ Even though the reduced state variable formulation is simpler, the minimization 
 true especially when the radiometer footprint size is significantly larger than that of the radar footprint size. Moreover, the simulated and observed
 brightness temperatures at some frequencies may be in poor agreement because of other variables, such as the surface emissivity, the vertical cloud water
 distribution, etc., and the state variable vector $\mathbf{X={N_w}}$ needs to be extended to include these variables.  Although still simpler than a
-problem that includes $\mathbf{D_m}$ as an independent variable and the observed Ku-band reflectivity as observations rather than constraints,
+problem that, in addition to $\mathbf{N_w}$, includes $\mathbf{D_m}$ as an independent variable and the observed Ku-band reflectivity as observations rather than constraints,
 the optimization associated with the combined retrieval is still rather a computationally difficult problem.  This is because the most efficient optimization
 problem solvers require the gradient calculations (i.e. the derivative of the objective function with respect to the state variable) \cite{bertsekas2016}.
 The naive evaluation of the gradient is computational expensive, but special techniques involving reverse evaluations may be used \cite{grecu2002}.
 The challenge with reverse evaluation is that they are not as intuitive as the forward implementation of the physical models involved in the retrievals
 and are prone to implementation errors if manually coded.  Software programs to automatically derive the reverse gradients from the forward objective 
-function implementation \cite{grecu2002}, but they may run into efficiency issues for objective functions involving complex forward models. An alternative
+function implementation \cite{grecu2002} exist, but they may run into efficiency issues for objective functions involving complex forward models. An alternative
 to the analytical linearization of the objective function is the statistical linearization \cite{gelb1974}. A particular statistical linearization 
 approach  that has become extremely popular in the last 20 years is the Ensemble Kalman Filter \cite{evensen2009}. In a nutshell, the approach consists
 of statistically perturbing the state variables and calculating an ensemble of observations associated with the perturbed state variables.  Instead of
@@ -385,24 +399,27 @@ effects to mitigate biases in the estimates. This is because non-homogeneity in 
 cancel out in the observation space due to the fact that the energy backscattered by precipitation particles in a certain volume is not linearly related
 to the amount of precipitation in that volume.  Moreover, energy backscattered by precipitation in atmospheric volumes relatively close to one another may 
 be subject to significantly different degrees of attenuation \cite{iguchi2009}, which makes NUBF effects increase with frequency.  To mitigate NUBF effects,
-Monte Carlo methodologies based on the downscaling of observations and retrievals to finer scale may be used. Such a methodology has been developed for 
+Monte Carlo methodologies based on the downscaling of observations and retrievals at finer scale may be used. Such a methodology has been developed for 
 and implemented in the GPM combined algorithm \cite{grecu2016}. Specifically, given a profile of Ku-band radar reflectivity observations, a set of profiles is 
 statistically generated such that their average in the natural space yields back the original profile. Hitschfeld Bordan precipitation estimates are derived for 
 every statistically generated Ku-band observation profile and the associated Ka-band radar observations are calculated and aggregated back to the original
 radar resolution. It was found that, depending on the degree of assumed variability with the radar footprint the resulting Ka-band reflectivity profiles may
 be significantly different from the one calculated assuming no variability within the radar observing volumes \cite{grecu2016}.  Similar behaviour was found
-for the calculated Ka-band PIA.  The parameters of the downscaling model developed in \cite{grecu2016} were found to be biased and updated in subsequent
-versions of the GPM combined algorithm.  Moreover, it was found that multiple scattering effects, that consist of multiple interactions of radar emitted energy
+for the calculated Ka-band PIA.  The parameters of the downscaling model developed in \cite{grecu2016} were determined by trial and error, but found to be biased
+and updated in subsequent versions of the GPM combined algorithm.  Moreover, it was found that multiple scattering effects, that consist of multiple interactions of radar emitted energy
 with precipitation particles before reaching the radar receiver, may be significant at Ka-band. A computationally efficient model to account for
-multiple scattering effects in radar observations was developed by Hogan and Battaglia \cite{hogan2008}.  The model can readily calculate radar
+multiple scattering effects in radar observations was developed by Hogan and Battaglia \cite{hogan2008} and implemented in the GPM combined algorithm
+\cite{grecu2016}.  The model can readily calculate radar
 observations accounting for higher interactions between the energy emitted by the radar and precipitation particles as a function of
 precipitation electromagnetic scattering properties such as the extinction and scattering coefficients, the asymmetry factor and the 
 unattenuated reflectivity. These properties may be obtained from the scattering lookup tables using procedures similar to that outlined in listing \ref{LTlist}.
 
-An example of GPM Ku-band radar observed reflectivity profile is shown in \ref{fig:NUBF}.  The Ka-band reflectivity profiles derived from the Ku-band
+An example of Ku-band radar observed reflectivity profile from the Global Precipitation Mission (GMP) \cite{gail2017} is shown in \ref{fig:NUBF}.  
+The Ka-band reflectivity profiles derived from the Ku-band
 estimates using three different models are also shown in the figure.  The first model, indicated as $Z_{sim}(Ka)$ in the figure, is a simple single-scattering 
 model that does not account for either NUBF or multiple scattering effects.  The second model, $Z_{NUBFsim}(Ka)$, accounts for NUBF effects, while the third,
-$Z_{MS}(Ka)$ accounts for multiple scattering effects.  Note that the difference between the model that accounts for multiple scattering and those that do not
+$Z_{MS}(Ka)$ accounts for multiple scattering effects using the implementation of \cite{hogan2008}.  Note that the difference between the model that accounts 
+for multiple scattering and those that do not
 are extremely large.  In the absence of such a model, the optimal estimation framework would interpret the differences between simulated and observed Ka-band
 reflectivities as severe attenuation at Ka-band and would adjust the solution to one characterized by significantly less attenuation.  The adjusted solution
 would be associated with significantly smaller precipitation rates (or equivalent water contents).  In reality, while the attenuation is indeed severe at 
@@ -422,6 +439,18 @@ associated with uniform extinction within the radar observing volumes.
 \subsubsection{Radiance preprocessing}
 As previously mentioned, a particular challenge in the derivation of precipitation estimates from combined radar and radiometer observations stems
 in the fact that the radiometer footprint size is significantly larger than that of the radar. To mitigate this challenge, one may 
+treat the problem as a large scale optimization problem and simultaneously process the observations from multiple radar scans and the associated
+brightness temperatures.  In this case, the brightness temperatures simulated from the radar retrievals are convolved to the radiometer footprint 
+resolution and the radar retrievals are updated to improve the consistency between simulated and observed brightness temperatures at radiometer footprint scale.
+While mathematically this is the best approach, it is computationally challenging, without guaranteeing significantly better results than simpler
+approach due to uncertainties in the forward model and limited informational content in the observations.  A simpler solution, although theoretically
+more prone to uncertainties, is to deconvolve the radiometer observed brightness temperatures to the radar footprint resolution and derive estimates
+by sequentially processing radar observations profiles. This approach is used in the GPM combined algorithm \cite{grecu2016}. Specifically, \cite{grecu2016}
+use simulations to derive a multivariate regression to estimate the radiometer brightness temperature at radar footprint size resolution from the 
+actual radiometer observations within a window centered on the radar footprint's position.  Although the approach works satisfactorily within the GPM
+combine algorithm is expected that more advanced methodologies based on deep learning  \cite{yang2019} would be more effective in deconvolving the
+observed radiometer observations.
+
 \section{GPM combined observations and retrievals}
 \subsection{Observations}
 Shown in figure \ref{fig:dataEx} is an example of observations from the Global Precipitation Measurement (GPM) mission \cite{gail2017}.
@@ -475,8 +504,22 @@ equivalent to the determination of function $f$ of variables $X$ and parameters 
 The agreement between $f(\mathbf{ X_i},\Theta)$ and $y_i$ is evaluated through typical mathematical functions called loss functions \cite{deeplearning2016}.
 Function $f$ consists of a sequential composition of rather elementary functions \cite{deeplearning2016}.
 Multiple software libraries that allow the definition of function $f$ and the determination of parameters $\Theta$ with minimum effort exist.  In this 
-chapter, the TensorFlow machine learning library \cite{tensorflow2015} is used.
-
+chapter, the TensorFlow machine learning library \cite{tensorflow2015} is used to derive a model to estimate the differential PIA from observed GMI observations.
+The model is based on a simple feed forward architecture with four hidden layers consisting of eight neurons. Alternatives architectures were considered,
+but given the simplicity of data no significant variations in performance was found as long as the network had sufficient neurons (on the order of hundreds)
+to encode the information in the training dataset.  The training dataset consists of about 180,000 records of observed GMI brightness temperatures over 
+oceans and associated differential SRT PIA, while the evaluation dataset consists of about 90,000 records.  Shown in the right panel of Fig. \ref{fig:ML_PIA} 
+is the joint distribution of the PIA(Ku) estimated from observed radiometer observations and the PIA(Ku) estimated using the differential SRT. As apparent
+in the figure, the agreement between the ML and the differential SRT estimates is good.  The frequency of ML PIA(Ku) estimates exceeded 4 dB appears to be
+notable lower than that of differential SRT estimates exceeding 4 dB, which is most likely of consequence of the coarse resolution of the low frequency
+radiometer observations.  That is, given its coarse resolution, there is a significant variability of precipitation within a radiometer footprint.  The exact
+location is difficult to pinpoint especially using estimators that do not incorporation spatial information.  Nevertheless, the ML estimator's deficiency
+in estimating PIAs larger than 4 dB is not a significant drawback in practice because single frequency SRT PIA estimates tend to be reliable when PIA is larger
+than 4 dB  \cite{meneghini2000}.  At the same time, single frequency SRT PIA estimates tend to be unreliable for small PIA values.  Thus, the ML and single frequency SRT PIA estimates 
+work best in tandem, by complementing each other.  For context, the joint distribution of single and differential SRT PIA estimates are shown in the left-hand
+panel of \ref{fig:ML_PIA}.  As apparent in the figure, the agreement between ML and differential SRT PIA estimates is better than that between 
+single and differential SRT estimates.  This is not surprising, given that the random component of the single frequency SRT PIA error is rather large 
+\cite{meneghini2000}.
 
 \begin{figure} \label{fig:ML_PIA}
     \centerline{}
@@ -484,6 +527,15 @@ chapter, the TensorFlow machine learning library \cite{tensorflow2015} is used.
     
     \caption{(Left) Ku-band PIA estimates from the single frequency SRT analysis against Ku-band PIA estimates from the single frequency SRT analysis. Brightness-
     temperature ML-based PIA estimates against reference PIA estimates from both single and dual-frequency SRT analysis.}
+\end{figure}
+
+\subsection{Combined estimates}
+
+\begin{figure} \label{fig:retrievals}
+    \centerline{}
+    \includegraphics[width=\textwidth]{retPIA.png}
+    
+    \caption{PIAs and Retrievals.}
 \end{figure}
 
 \section{Summary and conclusions}

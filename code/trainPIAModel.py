@@ -30,7 +30,7 @@ for f in fs:
         if not(reliab[i]==1 or reliab[i]==2):
             continue
         x1=[]
-        x1=[(kern@tb[i,:,:,k]).sum() for k in range(9)]
+        #x1=[(kern@tb[i,:,:,k]).sum() for k in range(9)]
         x1.extend(tb2[i,1,1,:])
         x1.extend(zKu[i,bzd[i]-30:bzd[i]+15:2])
         if piaKu[i,1]<20:
@@ -57,7 +57,7 @@ for f in fs:
             continue
         x1=[]
         if dreliab[i]==1 or dreliab[i]==2:
-            x1=[(kern@tb[i,:,:,k]).sum() for k in range(9)]
+            #x1=[(kern@tb[i,:,:,k]).sum() for k in range(9)]
             x1.extend(tb2[i,1,1,:])
             x1.extend(zKu[i,bzd[i]-30:bzd[i]+15:2])
             X.append(x1)
@@ -72,6 +72,7 @@ k=50
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(\
     np.array(tbL)[:,:], np.array(piaKuL), test_size=0.33, random_state=42)
+stop
 n_neighbors = k
 
 
@@ -106,9 +107,9 @@ print(scalery.mean_)
 print(scalery.scale_)
 
 import pickle
-pickle.dump({"scalerX":scalerX,"scalery":scalery},open("scalers.pklz","wb"))
+pickle.dump({"scalerX":scalerX,"scalery":scalery},open("scalers_32.pklz","wb"))
 model.fit(X_trainNN, y_trainNN, epochs=40, batch_size=64)
-model.save('piaTbConvZ_with_SF_SRT.h5')
+model.save('piaTbZ_with_SF_SRT.h5')
 
 import pickle
 
@@ -141,4 +142,4 @@ plt.ylim(0,7)
 cbar=plt.colorbar(c,orientation='horizontal')
 cbar.ax.set_title('Counts')
 plt.tight_layout()
-plt.savefig('ML_PIA.png')
+plt.savefig('ML_PIA_32.png')

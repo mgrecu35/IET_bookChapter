@@ -5,13 +5,15 @@ nmu=5
 
 import pickle
 
-d=pickle.load(open("scalers.pklz","rb"))
+d=pickle.load(open("scalers_32.pklz","rb"))
 from tensorflow import keras
-model = keras.models.load_model('piaTbZ_2.h5')
-
+model = keras.models.load_model('piaTbZ_with_SF_SRT.h5')
+#piaTbConvZ_with_SF_SRT
+#print(model.summary())
+#stop
 #rteLib.readtablesliang2(nmu,nmfreq)
 fDPR='2A-CS-KWAJ.GPM.DPR.V9-20211125.20220311-S235430-E235603.045647.V07A.HDF5'
-fDPR='case/2A-CS-KWAJ.GPM.DPR.V9-20211125.20150311-S162503-E162626.005866.V07A.HDF5'
+fDPR='../case/2A-CS-KWAJ.GPM.DPR.V9-20211125.20150311-S162503-E162626.005866.V07A.HDF5'
 #fDPR='2A-CS-KWAJ.GPM.DPR.V9-20211125.20150310-S040452-E040612.005842.V07A.HDF5'
 #fDPR='2A-CS-KWAJ.GPM.DPR.V9-20211125.20150307-S050703-E050832.005796.V07A.HDF5'
 #fDPR='2A-CS-KWAJ.GPM.DPR.V9-20211125.20150303-S183930-E184101.005743.V07A.HDF5'
@@ -29,7 +31,7 @@ zm0[zm0<0]=0
 piaF=fhD["FS/SLV/piaFinal"][:]
 srt_pia=fhD["FS/SRT/pathAtten"][:]
 
-fh_gmi=Dataset("case/1C-R-CS-KWAJ.GPM.GMI.XCAL2016-C.20150311-S162548-E162730.005866.V07A.HDF5")
+fh_gmi=Dataset("../case/1C-R-CS-KWAJ.GPM.GMI.XCAL2016-C.20150311-S162548-E162730.005866.V07A.HDF5")
 gmi_lon=fh_gmi["S1/Longitude"][:]
 gmi_lat=fh_gmi["S1/Latitude"][:]
 tc=fh_gmi["S1/Tc"][:]

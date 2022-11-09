@@ -530,8 +530,24 @@ single and differential SRT estimates.  This is not surprising, given that the r
 \end{figure}
 
 \subsection{Combined estimates}
+Shown in Fig. \ref{fig:ML_PIA} is differential PIA from the ML model described in the previous section along with 
+the estimates from the differential and single frequency SRT methods.  The official DPR Version 7 differential PIA 
+estimates (labeled as DPR in the figure) along with a range of estimates (labeled HB) derived using the Histchfeld Bordan 
+approach implemented in listing \ref{HBlist}
+and supporting routines in the chapter code repository are also shown in Fig. \ref{fig:ML_PIA}. As apparent in the figure,
+the various estimates are generally in good agreement, with the exception of two regions around relative scan number 20 and 60.
+These regions are characterized by large attenuation, which is apparent in the Ka-band observations shown in
+Fig. \ref{fig:dataEx}. As previously mentioned, when the attenuation is very large, neither differential SRT-based 
+nor brightnes temperature based PIA estimates are reliable due to the saturation effects.  That is observations involved
+in the estimation process do not exhibit changes in magnitude when the integrated attenuation exceeds a certain threshold.
+In such situation the single frequency SRT PIA estimates are most reliable. While an optimal estimation framework such
+that the ensemble methodology outlined in the previous section can incorporate multiple estimates of the same variable,
+the specification of the uncertainties associated with those estimates is challenging in practice because errors tend
+to have distributions signficantly more complex than a normal distribution. The Hitchfeld-Bordan approach results in a 
+a distribution of estimates because any specific assumption regarding the PSD intercept $N_w$ results in particular PIA
+precipitation profile estimates.
 
-\begin{figure} \label{fig:retrievals}
+\begin{figure}\label{fig:retrievals}
     \centerline{}
     \includegraphics[width=\textwidth]{retPIA.png}
     

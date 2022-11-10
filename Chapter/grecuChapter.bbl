@@ -14,57 +14,57 @@ Weinman JA, Meneghini R, Nakamura K.
 \bibitem{Meneghini1983}
   Meneghini R, Eckerman J, Atlas D.
 \newblock Dermination of Rain Rate from a Spaceborne Radar Using Measurements of Total Attenuation.
-\newblock IEEE Transactions on Geoscience and Remote Sensing.1983;GE-21;34--43.
+\newblock IEEE Transactions on Geoscience and Remote Sensing.1983;GE-21: 34--43.
 
 \bibitem{Fujita1985}
 Fujita M, Okamoto K, Yoshikado S, Nakamura K.
 \newblock Inference of rain rate profile and path-integrated rain rate by an airborne microwave rain scatterometer.
-\newblock Radio Science. 1985; 20(3); 631--642.
+\newblock Radio Science. 1985; 20(3): 631--642.
 
 \bibitem{smith1997}
 Smith E, Turk FJ, Farrar M, Mugnai A, Xiang X.
 \newblock Estimating 13.8-GHz pathintegrated attenuation from 10.7-GHz brightness temperatures for the TRMM combined PRTMI precipitation algorithm.
-\newblock  Journal of Applied Meteorology. 1997; 36; 365--388.
+\newblock  Journal of Applied Meteorology. 1997; 36: 365--388.
 
 \bibitem{kummerow1998}
 Kummerow CK.
 \newblock The Tropical Rainfall Measuring Mission (TRMM) sensor package. 
-\newblock Journal of Atmospheric and Oceanic Technology. 1998; 15; 809--817.
+\newblock Journal of Atmospheric and Oceanic Technology. 1998; 15: 809--817.
 
 \bibitem{haddad1997}
 Haddad Z.
 \newblock The TRMM day-1 radar/radiometer combined rain-profiling algorithm.
-\newblock Journal of the Meteorological Society of Japan. 1997; 75; 799--809.
+\newblock Journal of the Meteorological Society of Japan. 1997; 75: 799--809.
 
 \bibitem{grecu2004}
 Grecu M, Olson WS, Anagnostou E.
 \newblock Retrieval of precipitation profiles from multiresolution, multifrequency active and passive microwave observations.
-\newblock Journal of Applied Meteorology. 2004; 43; 562--575.
+\newblock Journal of Applied Meteorology. 2004; 43: 562--575.
 
 \bibitem{masunaga2005}
 Masunaga H.
 \newblock Combined radar and radiometer analysis of precipitation profiles for a parametric retrieval algorithm. 
-\newblock Journal of Atmospheric and Oceanic Technology. 2005; 22; 909--929.
+\newblock Journal of Atmospheric and Oceanic Technology. 2005; 22: 909--929.
 
 \bibitem{munchak2011}
 Munchak J.
 \newblock A modular optimal estimation method for combined radar-radiometer precipitation profiling. 
-\newblock Journal of Applied Meteorology and Climatology. 2001; 50; 433--448.
+\newblock Journal of Applied Meteorology and Climatology. 2001; 50: 433--448.
 
 \bibitem{grecu2006}
 Grecu M, Olson W.S.
 \newblock Bayesian estimation of precipitation from satellite passive microwave observations using combined radar retrievals.
-\newblock Journal of Applied Meteorology and Climatology. 2006; 45; 416--433.
+\newblock Journal of Applied Meteorology and Climatology. 2006; 45: 416--433.
 
 \bibitem{kummerow2011}
 Kummerow C.
 \newblock An observationally generated a priori database for microwave rainfall retrievals. 
-\newblock Journal of Atmospheric and Oceanic Technology. 2011; 28; 113--130.
+\newblock Journal of Atmospheric and Oceanic Technology. 2011; 28: 113--130.
 
 \bibitem{hou2014}
 Hou A.
 \newblock The global precipitation measurement mission. 
-\newblock Bulletin of the American Meteorological Society. 2014; 95; 701--722.
+\newblock Bulletin of the American Meteorological Society. 2014; 95: 701--722.
 
 \bibitem{meneghini1990}
 Meneghini R, Kozu T.
@@ -74,29 +74,29 @@ Meneghini R, Kozu T.
 \bibitem{marshall_palmer_1948}
 Marshall JS, Palmer WMK.
 \newblock The distribution of raindrops with size. 
-\newblock J. Meteorol. 1948, 5, 165–166.
+\newblock J. Meteorol. 1948; 5: 165–166.
 
 \bibitem{marshall_w_palmer_1947}
-J. S.  Marshall and R. C.  Langille and W. Mc K.  Palmer",
+Marshall JS, Langille RC, Palmer WMK.
 \newblock Measurement of rainfall by radar.
-\newblock Journal of Atmospheric Sciences. 1997; 4(6); 186--192.
+\newblock Journal of Atmospheric Sciences. 1997; 4(6): 186--192.
 
 
 
 \bibitem{ulbrich1983}
 Ulbrich CW.
 \newblock Natural variations in the analytical form of the raindrop size distribution.
-\newblock Journal of climate and applied meteorology. 1983; 22(10). 1764--1775.
+\newblock Journal of climate and applied meteorology. 1983; 22(10): 1764--1775.
 
 \bibitem{ssrivastava1970} 
 Sekhon RS, Srivastava RC.
 \newblock Snow Size Spectra and Radar Reflectivity.
-\newblock Journal of Atmospheric Sciences. 1970; 27(2); 299--307.
+\newblock Journal of Atmospheric Sciences. 1970; 27(2): 299--307.
 
 \bibitem{heymsfield_a1977}
 Heymsfield A.
 \newblock Precipitation Development in Stratiform Ice Clouds: A Microphysical and Dynamical Study
-\newblock Journal of Atmospheric Sciences. 1977; 34(2); 367--381.
+\newblock Journal of Atmospheric Sciences. 1977; 34(2): 367--381.
 
 \bibitem{battan1973}
 Battan LJ.
@@ -111,7 +111,7 @@ Bohren CF, Huffman DR.
 \bibitem{misch2002}
 Mishchenko MI, Travis LD, Lacis AA. 
 \newblock Scattering, absorption, and emission of light by small particles. 
-\newblock Cambridge university press; 2002 Jun 6.
+\newblock Cambridge university press. 2002.
 
 \bibitem{tyynela2011}
 Tyynelä J, Leinonen J, Moisseev D, Nousiainen T. 
@@ -121,168 +121,168 @@ Tyynelä J, Leinonen J, Moisseev D, Nousiainen T.
 \bibitem{liu2004}
 Liu G. 
 \newblock Approximation of single scattering properties of ice and snow particles for high microwave frequencies. 
-\newblock Journal of the atmospheric sciences. 2004 Oct 1;61(20):2441-56.
+\newblock Journal of the atmospheric sciences. 2004;61(20):2441-56.
 
 \bibitem{kuo2016}
 Kuo KS, Olson WS, Johnson BT, Grecu M, Tian L, Clune TL, van Aartsen BH, Heymsfield AJ, Liao L, Meneghini R. 
 \newblock The Microwave Radiative Properties of Falling Snow Derived from Nonspherical Ice Particle Models. 
 Part I: An Extensive Database of Simulated Pristine Crystals and Aggregate Particles, and Their Scattering Properties
-\newblock Journal of Applied Meteorology and Climatology. 2016 Mar 1;55(3):691-708.
+\newblock Journal of Applied Meteorology and Climatology. 2016;55(3):691-708.
 
 \bibitem{dda1994}
 Draine BT, Flatau PJ. 
 \newblock Discrete-dipole approximation for scattering calculations. 
-\newblock Josa a. 1994 Apr 1;11(4):1491-9.
+\newblock Josa A. 1994;11(4):1491-9.
 
 \bibitem{hogan2017}
 Hogan RJ, Honeyager R, Tyynelä J, Kneifel S. 
 \newblock Calculating the millimetre‐wave scattering phase function of snowflakes using the self‐similar Rayleigh–Gans Approximation. 
-\newblock Quarterly Journal of the Royal Meteorological Society. 2017 Jan;143(703):834-44.
+\newblock Quarterly Journal of the Royal Meteorological Society. 2017;143(703):834-44.
 
 \bibitem{spectral_matlab}
 Trefethen LN. 
 \newblock Spectral methods in MATLAB. 
-\newblock Society for industrial and applied mathematics; 2000 Jan 1.
+\newblock Society for industrial and applied mathematics; 2000.
 
 \bibitem{rosenkranz1998}
-Rosenkranz, P.W. 
+Rosenkranz PW. 
 \newblock Water vapor microwave continuum absorption: A comparison of measurements and models. 
-\newblock Radio Sci. 1998, 33, 919–928.
+\newblock Radio Sci. 1998; 33: 919–928.
 
 \bibitem{norm_dsd_2001}
 Testud J, Oury, S, Black RA, Amayenc P,  Dou X.
 \newblock  The Concept of “Normalized” Distribution to Describe Raindrop Spectra: A Tool for Cloud Physics and Cloud Remote Sensing. 
-\newblock Journal of Applied Meteorology, (2001). 40(6); 1118--1140.
+\newblock Journal of Applied Meteorology. 2001; 40(6): 1118--1140.
 
 \bibitem{bringi2003}
 Bringi VN, Chandrasekar V, Hubbert J, Gorgucci E, Randeu WL, Schoenhuber M. 
 \newblock Raindrop size distribution in different climatic regimes from disdrometer and dual-polarized radar analysis. 
-\newblock Journal of the atmospheric sciences. 2003 Jan;60(2):354-65.
+\newblock Journal of the atmospheric sciences. 2003;60(2):354-65.
 
 \bibitem{ferreira2001}
 Ferreira F, Amayenc P, Oury S, Testud J. 
 \newblock Study and tests of improved rain estimates from the TRMM precipitation radar. 
-\newblock Journal of Applied Meteorology. 2001 Nov;40(11):1878-99.
+\newblock Journal of Applied Meteorology. 2001;40(11):1878-99.
 
 \bibitem{impacts2022}
 McMurdie LA, Heymsfield GM, Yorks JE, Braun SA, Skofronick-Jackson G, Rauber RM, Yuter S, Colle B, McFarquhar GM, Poellot M, Novak DR. 
 \newblock Chasing Snowstorms: The Investigation of Microphysics and Precipitation for Atlantic Coast-Threatening Snowstorms (IMPACTS) Campaign. 
-\newblock Bulletin of the American Meteorological Society. 2022 May;103(5):E1248-74.
+\newblock Bulletin of the American Meteorological Society. 2022;103(5):248-74.
 
 \bibitem{iguchi_meneghini_1994}
 Iguchi T, Meneghini R. 
 \newblock Intercomparison of single-frequency methods for retrieving a vertical rain profile from airborne or spaceborne radar data. 
-\newblock Journal of Atmospheric and Oceanic Technology. 1994 Dec;11(6):1507-16.
+\newblock Journal of Atmospheric and Oceanic Technology. 1994;11(6):1507-16.
 
 \bibitem{meneghini1983}
 Meneghini R, Eckerman J, Atlas D.
 \newblock Determination of Rain Rate from a Spaceborne Radar Using Measurements of Total Attenuation.
-\newblock IEEE Transactions on Geoscience and Remote Sensing, vol. GE-21, no. 1, pp. 34-43, Jan. 1983, doi: 10.1109/TGRS.1983.350528.
+\newblock IEEE Transactions on Geoscience and Remote Sensing. 1983; 21: 34-43.
 
 \bibitem{marzoug1991}
 Marzoug M, Amayenc P. 
-\newblock Improved range-profiling algorithm of rainfall rate from a spaceborne radar with path-integrated attenuation constraint
-\newblock IEEE Transactions on Geoscience and Remote Sensing, vol. 29, no. 4, pp. 584-592, July 1991, doi: 10.1109/36.135820.
+\newblock Improved range-profiling algorithm of rainfall rate from a spaceborne radar with path-integrated attenuation constraint.
+\newblock IEEE Transactions on Geoscience and Remote Sensing. 1981; 29(4): 584-592.
 
 \bibitem{iguchi2000}
 Iguchi T, Kozu T, Meneghini R, Awaka J, Okamoto KI. 
 \newblock Rain-profiling algorithm for the TRMM precipitation radar. 
-\newblock Journal of applied meteorology. 2000 Dec;39(12):2038-52.
+\newblock Journal of applied meteorology. 2000;39(12):2038-52.
 
 \bibitem{tarantola2005}
 Tarantola A. 
 \newblock Inverse problem theory and methods for model parameter estimation. 
-\newblock Society for industrial and applied mathematics; 2005 Jan 1.
+\newblock Society for industrial and applied mathematics. 2005.
 
 \bibitem{grecu2002}
 Grecu M, Anagnostou EN. 
-\newblock Use of Passive Microwave Observations in a Radar Rainfall-Profiling Algorithm
-\newblock Journal of Applied Meteorology, 41(7), 702-715.
+\newblock Use of Passive Microwave Observations in a Radar Rainfall-Profiling Algorithm.
+\newblock Journal of Applied Meteorology. 2002: 41(7): 702-715.
 
 \bibitem{marzano1999}
 Marzano FS, Mugnai A, Panegrossi G, Pierdicca N, Smith EA, Turk J. 
 \newblock Bayesian estimation of precipitating cloud parameters from combined measurements of spaceborne microwave radiometer and radar. 
-\newblock IEEE Transactions on Geoscience and Remote Sensing. 1999 Jan;37(1):596-613.
+\newblock IEEE Transactions on Geoscience and Remote Sensing. 1999;37(1):596-613.
 
 \bibitem{kummerow1993}
 Kummerow C.
 \newblock On the accuracy of the Eddington approximation for radiative transfer in the microwave frequencies. 
-\newblock Journal of Geophysical Research: Atmospheres. 1993 Feb 20;98(D2):2757-65.
+\newblock Journal of Geophysical Research: Atmospheres. 1993;98(D2):2757-65.
 
 \bibitem{liu1996}
 Liu Q, Simmer C, Ruprecht E. 
 \newblock Three‐dimensional radiative transfer effects of clouds in the microwave spectral range. 
-\newblock Journal of Geophysical Research: Atmospheres. 1996 Feb 20;101(D2):4289-98.
+\newblock Journal of Geophysical Research: Atmospheres. 1996;101(D2):4289-98.
 
 \bibitem{grecu2016}
 Grecu M, Olson WS, Munchak SJ, Ringerud S, Liao L, Haddad Z, Kelley BL, McLaughlin SF. 
 \newblock The GPM combined algorithm. 
-\newblock Journal of Atmospheric and Oceanic Technology. 2016 Oct 1;33(10):2225-45.
+\newblock Journal of Atmospheric and Oceanic Technology. 2016;33(10):2225-45.
 
 \bibitem{gelb1974}
 Gelb, A. 
 \newblock Applied Optimal Estimation. 
-\newblock The M.I.T. Press.
+\newblock The M.I.T. Press. 1974.
 
 \bibitem{bertsekas2016}
 Bertsekas D. 
 \newblock Nonlinear Programming. 
-\newblock Athena Scientific; 2016 Sep 1.
+\newblock Athena Scientific; 2016.
 
 \bibitem{evensen2009}
 Evensen G. 
 \newblock Data assimilation: the ensemble Kalman filter. 
-\newblock Berlin: springer; 2009 Aug 17.
+\newblock Berlin: springer; 2009.
 
 \bibitem{doicu2010}
 Doicu A, Trautmann T, Schreier F. 
 \newblock Numerical regularization for atmospheric inverse problems
-\newblock Springer Science and Business Media; 2010 Jul 16.
+\newblock Springer Science and Business Media. 2010.
 
 \bibitem{maahn2020}
 Maahn M, Turner, DD, Löhnert U, Posselt DJ, Ebell K, Mace GG,  Comstock JM.
 \newblock Optimal Estimation Retrievals and Their Uncertainties: What Every Atmospheric Scientist Should Know.
-\newblock Bulletin of the American Meteorological Society. 2020; 101(9), E1512-E1523. 
+\newblock Bulletin of the American Meteorological Society. 2020; 101(9): E1512-E1523. 
 
 \bibitem{iguchi2009}
 Iguchi T, Kozu T, Kwiatkowski J, Meneghini R, Awaka J, Okamoto KI. 
 \newblock Uncertainties in the rain profiling algorithm for the TRMM precipitation radar. 
-\newblock Journal of the Meteorological Society of Japan. Ser. II. 2009 Mar 31;87:1-30.
+\newblock Journal of the Meteorological Society of Japan. Ser. II. 2009;87:1-30.
 
 \bibitem{hogan2008}
-Hogan, R. J., and A. Battaglia
+Hogan RJ, Battaglia A.
 \newblock Fast lidar and radar multiple-scattering models: Part 2: Wide-angle scattering using the time-dependent two-stream approximation. 
-\newblock J. Atmos. Sci. 2008; 65, 3636-3651
+\newblock J. Atmos. Sci. 2008; 65: 3636-3651
 
 \bibitem{yang2019}
 Yang W, Zhang X, Tian Y, Wang W, Xue JH, Liao Q. 
 \newblock Deep learning for single image super-resolution: A brief review. 
-\newblock IEEE Transactions on Multimedia. 2019 May 28;21(12):3106-21.
+\newblock IEEE Transactions on Multimedia. 2019;21(12):3106-21.
 
 \bibitem{gail2017}
 Skofronick-Jackson G, Petersen WA, Berg W, Kidd C, Stocker EF, Kirschbaum DB, Kakar R, Braun SA, Huffman GJ, Iguchi T, Kirstetter PE. 
 \newblock The Global Precipitation Measurement (GPM) mission for science and society. 
-\newblock Bulletin of the American Meteorological Society. 2017 Aug 1;98(8):1679-95.
+\newblock Bulletin of the American Meteorological Society. 2017;98(8):1679-95.
 
 \bibitem{gmi2015}
 Draper DW, Newell DA, Wentz FJ, Krimchansky S, Skofronick-Jackson GM. 
 \newblock The global precipitation measurement (GPM) microwave imager (GMI): Instrument overview and early on-orbit performance. 
-\newblock IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing. 2015 Mar 2;8(7):3452-62.
+\newblock IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing. 2015;8(7):3452-62.
 
 \bibitem{meneghini2015}
-Meneghini, R., Kim, H., Liao, L., Jones, J.A. and Kwiatkowski, J.M., 2015. 
+Meneghini R, Kim H, Liao L, Jones JA, Kwiatkowski JM. 
 \newblock An initial assessment of the surface reference technique applied to data from the dual-frequency precipitation radar (DPR) on the GPM satellite. 
-\newblock Journal of Atmospheric and Oceanic Technology, 32(12), pp.2281-2296.
+\newblock Journal of Atmospheric and Oceanic Technology. 2015; 32(12): 2281-2296.
 
 \bibitem{meneghini2000}
 Meneghini R, Iguchi T, Kozu T, Liao L, Okamoto KI, Jones JA, Kwiatkowski J. 
 \newblock Use of the surface reference technique for path attenuation estimates from the TRMM precipitation radar. 
-\newblock Journal of Applied Meteorology. 2000 Dec;39(12):2053-70.
+\newblock Journal of Applied Meteorology. 2000;39(12):2053-70.
 
 \bibitem{geron2022}
 Géron A.
 \newblock Hands-on machine learning with Scikit-Learn, Keras, and TensorFlow. 
-\newblock "O'Reilly Media, Inc."; 2022 Oct 4.
+\newblock O'Reilly Media, Inc. 2022.
 
 \bibitem{seto2021}
 Seto S, Iguchi T, Meneghini R, Awaka J, Kubota T, Masaki T, Takahashi N. 
@@ -292,13 +292,30 @@ Seto S, Iguchi T, Meneghini R, Awaka J, Kubota T, Masaki T, Takahashi N.
 \bibitem{deeplearning2016}
 Goodfellow I, Bengio Y, Courville A.
 \newblock  Deep learning.
-\newblock MIT press; 2016 Nov 10.
+\newblock MIT press. 2016.
 
 
 \bibitem{tensorflow2015}
 Abdai M, et al.
 \newblock TensorFlow: Large-scale machine learning on heterogeneous systems,
-\newblock 2015. Software available from tensorflow.org.
+\newblock Software available from tensorflow.org. 2015
+
+\bibitem{raincube2019}
+Peral E, Tanelli S, Statham S, Joshi S, Imken T, Price D, Sauder J, Chahat N, Williams A. 
+\newblock RainCube: the first ever radar measurements from a CubeSat in space. 
+\newblock Journal of Applied Remote Sensing. 2019 Jun;13(3):032504.
+
+\bibitem{tropics2018}
+Blackwell WJ, Braun S, Bennartz R, Velden C, DeMaria M, Atlas R, Dunion J, Marks F, Rogers R, Annane B, Leslie RV. 
+\newblock An overview of the TROPICS NASA earth venture mission. 
+\newblock Quarterly Journal of the Royal Meteorological Society. 2018 Nov;144:16-26.
+
+\bibitem{gong2021}
+Gong J, Wu DL, Eriksson P. 
+\newblock The first global 883 GHz cloud ice survey: IceCube Level 1 data calibration, processing and analysis. 
+\newblock Earth System Science Data. 2021 Nov 18;13(11):5369-87.
+
+
 
 \end{thebibliography}
 

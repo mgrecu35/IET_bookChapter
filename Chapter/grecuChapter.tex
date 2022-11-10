@@ -25,7 +25,7 @@ Specifically, the basic mathematical relationships connecting precipitation part
 are succinctly, but comprehensively, described.  In addition, codes to calculate radar and radiometer observations from normalized gamma size 
 distributions and using lookup tables of electromagnetic properties at the GPM radar and radiometer's frequency are provided in a
 code repository located at https://tinyurl.com/COMBALG. These codes along with the elements of the optimal estimation theory presented in the chapter
-may be used by the user to assemble simplified but effective radar radiometer precipitation estimation algorithms.  Examples of retrievals and 
+may be used by the reader to assemble simplified but effective radar radiometer precipitation estimation algorithms.  Examples of retrievals and 
 considerations regarding the development of combined algorithm for future satellite missions are also presented in the chapter.
 
 \index{fa series index text index!bcde index text index text index text!cdef index text index text} 
@@ -66,7 +66,7 @@ are consistent with both the radar and radiometer observations.  Consequently, t
 necessary in the development of “Bayesian” precipitation estimation algorithms from satellite
 radiometer-only observations \cite{grecu2006,kummerow2011,hou2014}. 
 
-\section{Fundamental Models}
+\section{Fundamental Models and Methods}
 
 \subsection{Precipitation particles and their electromagnetic properties}
 
@@ -500,20 +500,24 @@ between the observed GMI brightness temperatures and dual SRT PIA estimates, alt
 algorithm \cite{grecu2016}.
 
 Mathematically, the derivation of a parametric regression between two set of variables $\{\mathbf{X_1,X_2,...,X_n}\}$ and is $\{\mathbf{y_1,y_2,...,y_n}\}$ is 
-equivalent to the determination of function $f$ of variables $X$ and parameters $\Theta$ that maximizes the agreement between $f(\mathbf{ X_i},\Theta)$ and $y_i$.
+equivalent to the determination of a function $f$ of variables $X$ and parameters $\Theta$ that maximizes the agreement between $f(\mathbf{ X_i},\Theta)$ and $y_i$.
 The agreement between $f(\mathbf{ X_i},\Theta)$ and $y_i$ is evaluated through typical mathematical functions called loss functions \cite{deeplearning2016}.
 Function $f$ consists of a sequential composition of rather elementary functions \cite{deeplearning2016}.
 Multiple software libraries that allow the definition of function $f$ and the determination of parameters $\Theta$ with minimum effort exist.  In this 
 chapter, the TensorFlow machine learning library \cite{tensorflow2015} is used to derive a model to estimate the differential PIA from observed GMI observations.
-The model is based on a simple feed forward architecture with four hidden layers consisting of eight neurons. Alternatives architectures were considered,
-but given the simplicity of data no significant variations in performance was found as long as the network had sufficient neurons (on the order of hundreds)
+The model is based on a simple feed forward architecture with four hidden layers consisting of eight neurons \cite{deeplearning2016}.
+Alternatives architectures were considered,
+but, given the simplicity of data, no significant variations in performance was found as long as the network had sufficient neurons (on the order of hundreds)
 to encode the information in the training dataset.  The training dataset consists of about 180,000 records of observed GMI brightness temperatures over 
-oceans and associated differential SRT PIA, while the evaluation dataset consists of about 90,000 records.  Shown in the right panel of Fig. \ref{fig:ML_PIA} 
+oceans and associated differential SRT PIA estimates, while the evaluation dataset consists of about 90,000 records.  Shown in the right panel of Fig. \ref{fig:ML_PIA} 
 is the joint distribution of the PIA(Ku) estimated from observed radiometer observations and the PIA(Ku) estimated using the differential SRT. As apparent
-in the figure, the agreement between the ML and the differential SRT estimates is good.  The frequency of ML PIA(Ku) estimates exceeded 4 dB appears to be
+in the figure, the agreement between the ML and the differential SRT estimates is good.  The frequency of ML PIA(Ku) 
+estimates that exceeded 4 dB appears to be
 notable lower than that of differential SRT estimates exceeding 4 dB, which is most likely of consequence of the coarse resolution of the low frequency
-radiometer observations.  That is, given its coarse resolution, there is a significant variability of precipitation within a radiometer footprint.  The exact
-location is difficult to pinpoint especially using estimators that do not incorporation spatial information.  Nevertheless, the ML estimator's deficiency
+radiometer observations.  That is, given its coarse resolution, there is a significant variability of precipitation within
+a radiometer footprint.  The exact
+location of precipitation maxima is difficult to pinpoint especially using point estimators that do not incorporate spatial
+information.  Nevertheless, the ML estimator's deficiency
 in estimating PIAs larger than 4 dB is not a significant drawback in practice because single frequency SRT PIA estimates tend to be reliable when PIA is larger
 than 4 dB  \cite{meneghini2000}.  At the same time, single frequency SRT PIA estimates tend to be unreliable for small PIA values.  Thus, the ML and single frequency SRT PIA estimates 
 work best in tandem, by complementing each other.  For context, the joint distribution of single and differential SRT PIA estimates are shown in the left-hand
@@ -530,36 +534,40 @@ single and differential SRT estimates.  This is not surprising, given that the r
 \end{figure}
 
 \subsection{Combined estimates}
-Shown in the top panel of Fig. \ref{fig:ML_PIA} is differential PIA from the ML model described in the previous section along with 
+Shown in the top panel of Fig. \ref{fig:ML_PIA} is differential PIA estimated by the ML model described in the previous
+section using the radiometer observations associated with the GPM case show in Fig. \ref{fig:dataEx}. Over-plotted are 
 the estimates from the differential and single frequency SRT methods.  The official DPR Version 7 differential PIA 
 estimates (labeled as DPR in the figure) along with a range of estimates (labeled HB) derived using the Histchfeld Bordan 
 approach implemented in listing \ref{HBlist}
 and supporting routines in the chapter code repository are also shown in Fig. \ref{fig:ML_PIA}. As apparent in the figure,
-the various estimates are generally in good agreement, with the exception of two regions around relative scan number 20 and 60.
+the various estimates are generally in good agreement, with the exception of two regions around relative scan numbers 20 and 60.
 These regions are characterized by large attenuation, which is apparent in the Ka-band observations shown in
 Fig. \ref{fig:dataEx}. As previously mentioned, when the attenuation is very large, neither differential SRT-based 
 nor brightness temperature based PIA estimates are reliable due to the saturation effects.  That is observations involved
-in the estimation process do not exhibit changes in magnitude when the integrated attenuation exceeds a certain threshold.
-In such situation the single frequency SRT PIA estimates are most reliable. While an optimal estimation framework such
+in the estimation process do not exhibit any more changes in magnitude when the integrated attenuation exceeds a certain threshold.
+In such situations, the single frequency SRT PIA estimates are most reliable. While an optimal estimation framework such
 that the ensemble methodology outlined in the previous section can incorporate multiple estimates of the same variable,
 the specification of the uncertainties associated with those estimates is challenging in practice because errors tend
 to have distributions significantly more complex than a normal distribution. However, irrespective of how uncertainties
 are specified and which estimate is deemed the most reliable, PIA information is essential in narrowing down the distribution 
 of possible Hitschfeld-Bordan precipitation and associated PIA estimates.
 
-Shown in the bottom panel of Fig. \ref{fig:ML_PIA} are the surface precipitation estimates associated with Hitschfeld-Bordan solutions shown
+Shown in the bottom panel of Fig. \ref{fig:ML_PIA} are the surface precipitation estimates associated with the Hitschfeld-Bordan 
+solutions shown
 in the top panel of the figure and a surface precipitation estimate derived by adjusting the PSD $N_w$ to a value that maximizes the
 agreement between the associated PIA and the estimates from the ML model and the Ku-band SRT method. The Ku-band SRT PIA estimates are incorporated
 only in the estimation of convective precipitation.  In this illustrative example, $N_w$ is assumed vertically constant in the rain phase,
 and increasing with height in the ice phase using a relation derived from PSD observations from the IMPACTS field campaign \cite{impacts2022}.  
-The Hitschfeld-Bordan PIA is calculated as a function of $N_w$, i.e. $PIA_{HB}(N_w)$, and
+The Hitschfeld-Bordan PIAs are calculated as a function of $N_w$, i.e. $PIA_{HB}(N_w)$, and
 $N_w$ is updated based on the ML PIA estimate (and the Ku-band SRT PIA estimates for convective rain) using the methodology described in the
-previous section.  As apparent in the figure, the range of possible surface precipitation estimates that is broad.  The climatology of $Nw$
-varies significantly around the globe and as a function of season, and just setting $Nw$ based on its climatology results in large uncertainties.
+previous section.  As apparent in the figure, the initial range of possible surface precipitation estimates is broad.  The 
+climatology of $N_w$
+varies significantly around the globe and as a function of season, and just setting $N_w$ based on its climatology results in large uncertainties.
 This is why independent information on PIA is crucial in mitigating biases and uncertainties in space borne radar retrievals. 
 As demonstrated in this and the previous subsection, brightness temperature observations may be used to derive reliable PIA estimates and significantly
 impact the space borne radar precipitation estimates when reliable SRT PIA (or differential SRT PIA) estimates do not exist.  Differential SRT PIA estimates
-are generally reliable over oceans, but not all space borne Ku-band radar observations are associated with collocated Ka-band radar observations.
+are generally reliable over oceans, but not all space borne Ku-band radar observations are associated with collocated Ka-band 
+radar observations to enable the derivation of differential SRT estimates.
 This is the case for TRMM radar observations and GPM radar observations outside the matched scan before the scan pattern change. The brightness temperature
 observations are expected to be extremely consequential for such radar observations.
 
@@ -568,13 +576,41 @@ observations are expected to be extremely consequential for such radar observati
     \includegraphics[width=\textwidth]{retPIA.png}
     
     \caption{(Top) PIA estimates from the ML model, the official DPR version 7 algorithm, the differential and single frequency (Ku)
-    SRT method.  A range of Histchfeld-Bordan PIA derived using $N_w$ two times larger and smaller than the reference value of 0.08cm$^4$ is also
+    SRT method associated with the observations in Fig. \ref{fig:dataEx}.  A range of Histchfeld-Bordan PIA derived using $N_w$ two times larger and smaller 
+    than the reference value of 0.08cm$^4$ is also
     shown.(Bottom). The surface precipitation estimates from the Histchfeld-Bordan approach associated with the PIA shown in the top panel
     and the optimal surface precipitation estimate.}
 \end{figure}
 
 \section{Summary and conclusions}
-%µdI(µ, φ)dτ= I(µ, φ) −˜ω4π2π01−1p(µ, φ; µ, φ)I(µ, φ) dµdφ
+
+In this chapter, the basic theoretical and practical concepts associated with the development of algorithms to derive precipitation estimates 
+from satellite combined radar and radiometer observations are discussed. Concepts include  particle size distributions and their relations to radar
+and radiometer observations,
+and elements of the optimal estimation theory.  Computer codes to numerically explore the concepts described in the chapter are provided in a
+code repository located at \\https://tinyurl.com/COMBALG. These codes
+may be used by the reader to derive relatively simple but insightful radar radiometer precipitation estimation algorithms.  
+
+The initial motivation behind the development of combined radar-radiometer algorithms stemmed in fact information about the path-integrated attenuation associated with
+observations from space-borne radars operating at attenuating frequency may be obtained from collocated brightness temperatures.  This fact and its implication on
+the estimation of surface precipitation rate is illustrated in the chapter.  Additional motivation stems in the need to build databases of precipitation variables and
+physically consistent associated brightness temperatures to support the development of radiometer precipitation algorithms.
+
+It is envisioned that satellite combined radar and radiometer retrievals will be of paramount importance for the development of precipitation estimation algorithms
+for future mission sensors.  This is because future missions are likely to include a variety of new sensors that are 
+significantly smaller, less expensive and easier to deploy than existing ones \cite{raincube2019,tropics2018,gong2021}. However,
+miniaturization and affordability tends to be associated with higher-frequencies and more indirect observations.  As a consequence,
+more advanced algorithms are necessary to derive precipitation estimates are accurate as those derived from more
+traditional satellite instruments. These algorithms are likely to require supporting 3D precipitation databases that can be used
+for either regularization in the case of traditional optimal estimation framework or for the calculation of synthetic satellite
+observations and the development ML inversion techniques.  Such databases may be derived from existing products and methodologies
+through the inclusion and validation of forward observations models relevant to the new instruments.  From this perspective,
+combined radar-radiometer algorithms may serve as bridges between current and future missions.
+
+
+
+
+%µdI(µ, φ)dτ= I(µ, φ) −˜ω4π2π01−1p(µ, φ; µ, φ)I(µ, φ) dµdφ
 
 %F(N_w)=\frac {1}{2}  W_Y^{-1} ) 
 

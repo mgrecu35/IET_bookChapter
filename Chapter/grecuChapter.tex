@@ -60,9 +60,13 @@ radiometer observations in satellite radar profiling algorithms is challenging. 
 larger than the typical footprints of space-borne radars, which makes the radiometer observations difficult to translate into radar PIA. To overcome this difficulty various
 approaches akin to the downscaling of the radiometer observations to the radar footprint resolution have been developed \cite{haddad1997,grecu2004,masunaga2005,munchak2011}.
 A common feature of these approaches was that the radar-footprint PIA was not directly estimated from the radiometer observations. Instead, 
-optimization procedures were used to maximize the agreement between radiometer observations predicted from the radar observations and actual radiometer observations.  While
-the impact of the radiometer observations on the final radar estimates is difficult to quantify, a clear benefit of combined radar-radiometer precipitation retrievals
-are consistent with both the radar and radiometer observations.  Consequently, they may be used to derive large databases of precipitation and associated radiometer observations
+optimization procedures were used to minimize the differences between radiometer observations predicted from the radar observations and the radiometer observations.  While
+the impact of the radiometer observations on the accuracy of final radar estimates is difficult to quantify, a clear benefit of combined radar-radiometer precipitation 
+retrievals is
+that they are consistent with both the radar and radiometer observations. This is because the range of possible estimates that may be derived from radar-only observations
+is narrow down to estimates that are in agreement with the radiometer observations.
+Consequently, they may be used to derive large databases of precipitation and associated
+radiometer observations
 necessary in the development of “Bayesian” precipitation estimation algorithms from satellite
 radiometer-only observations \cite{grecu2006,kummerow2011,hou2014}. 
 
@@ -95,7 +99,7 @@ where $\lambda$ is radar frequency, $|K_w|$ is the dielectric factor of water, a
 backscattering cross-section of a precipitation particle of diameter $D$.  The backscattering cross-section is the equivalent area that
 would isotropically return an amount of power equal to that actually returned by the precipitation particle \cite{battan1973}.  
 The equivalent reflectivity factor is defined to equal $\int_0^{\infty} N(D) D^6 dD$ (in mm${^6}$m$^{-3}$) for spherical rain drops
-in the Rayleigh regime.  That is, for spherical raindrop whose diameter $D$ satisfy the inequality $\frac {\pi D} {\lambda} < 1$, the
+in the Rayleigh regime.  That is, for spherical raindrop whose diameter $D$ satisfy the inequality $\frac {\pi D} {\lambda} \ll 1$, the
 backscattering cross-section $\sigma_b(D)$ is proportional to $D^6$.  For DSD characterized by raindrops in the Rayleigh regime, 
 the radar reflectivity $Z$ defined $\int _0 ^{\infty} N(D) D^6 dD$ is a very simple but meaningful variable that can be calculated analytically
 as a function of the DSD parameters and readily determined from the power measured by radar. Consequently, the radar reflectivity has
@@ -145,8 +149,11 @@ parameter, also known as the generalized PSD intercept \cite{bringi2003}, is def
 \begin{equation} \label{eq:nw}
     N_w=\frac {4^4} {\pi \rho_w} \frac {PWC} {D_m^4}
 \end{equation}
-where $PWC$ is the equivalent precipitation (either ice or rain) water content and $D_m$ is the volume (or mass) weighted diameter.  One of
-the most consequential implications of the normalized intercept is the fact that it can explain and mitigate variability in the relationships between
+where $PWC$ is the equivalent precipitation (either ice or rain) water content and $D_m$ is the volume (or mass) weighted diameter. 
+The PSD intercept enables the expression of $N(D)$ in a compact form of the type, i.e. $N(D)=N_w h(D/D_m)$, where $h(D/D_m)$ is a rather 
+invariant function. While $h(D/D_m)$ cannot accurately characterize all relevant  PSDs. 
+However, this normalization can account for 85\% of first seven moments of the PSD \cite{berne2017}.
+One of the most consequential implications is that it can explain and mitigate variability in the relationships between
 radar observations and associated precipitation variables such as equivalent water content and rate.  
 That is, representations of the joint distributions of reflectivities simulated from 
 observed PSDs and the associated precipitation water content exhibit significant variability that makes the estimates the precipitation water content
@@ -158,7 +165,8 @@ This means that $IWC/N_w$ can be accurately predicted from $Z(Ku)/N_w$.  While n
 needs information about $N_w$ to derive a closed form solution for $IWC$, it does provide a general and physical consistent 
 framework to investigate and mitigate uncertainties in space-borne radar and radiometer retrievals.  This will be explained in detail in the next 
 section.  A remarkable fact regarding the normalization by $N_w$ is that it collapses all radar-precipitation relationships (e.g. reflectivity vs precipitation
-rate, attenuation vs reflectivity, attenuation vs. precipitation rate etc.) to one-to-one functions for both ice and water \cite{ferreira2001}.
+rate, attenuation vs reflectivity, attenuation vs. precipitation rate etc.) to approximate one-to-one functions for both ice 
+and water \cite{ferreira2001}. Or, more generally, this property applies any pair of normalized variables related by a power law.
 
 
 \begin{figure} 
@@ -185,7 +193,10 @@ Z(r)=Z_m(r) /(1-q\int_0^r Z_m^\beta(s)ds)^{1/\beta}
 \end{equation}
 where $q=0.2\beta ln(10)$.  This solution was first derived by Hitschfeld and Bordan \cite{hitschfeld1954} and started
 getting prominent in spaceborne radar applications with the work of \cite{meneghini1983}, \cite{marzoug1991} 
-and \cite{iguchi_meneghini_1994}.
+and \cite{iguchi_meneghini_1994}. It should be noted that parameter $\beta$ has to be constant with range for the solution to be applicable.
+However, $\beta$ is a function of the precipitation phase and varies, although not significantly. with range. 
+Parameter $\alpha$, on the other hand, does not vary with range. This makes it possible to account for variation in $\beta$ by
+variations in $\alpha$ \cite{iguchi_meneghini_1994}.
 
 A particular challenge in applying Eq. (\ref{eq:hbsol}) to radar observations affected by significant attenuation is
 that the numerical value of term $q\int_0^r Z_m^\beta(s)ds$ may become larger than 1.0, in which case the equation
@@ -201,16 +212,16 @@ variability, need to be derived and used to make the Hitschfeld-Bordan
 solution in Eq. (\ref{eq:hbsol}) consistent with SRT estimates of Path Integrated Attenuation (PIA).  Specifically,
 a more general $k-Z$ relationship of the type
 \begin{equation} \label{eq:kZ}
-k=dN_w^{1-\beta} \alpha Z^{\beta}
+k=N_{w,rel}^{1-\beta} \alpha Z^{\beta}
 \end{equation}
-where $dN_w$ is the ratio of actual $N_w$ to that of the reference $N_{w}^0$ for which the relation $k=\alpha Z^{\beta}$ 
+where $N_{w,rel}$ is the ratio of actual $N_w$ to that of the reference $N_{w}^0$ for which the relation $k=\alpha Z^{\beta}$ 
 holds perfectly may be derived and used with \ref{eq:hbsol}.  The PIA attenuation associated with the generalized 
 $k-Z$ relation in  \ref{eq:kZ} is
 \begin{equation} \label{eq:PIA}
-PIA_{HB}(dN_w)=-10/\beta \log_{10}(1-q dN_w^{1-\beta} \int_0^{r_s}\alpha Z_m^\beta(s)ds)
+PIA_{HB}(N_{w,rel})=-10/\beta \log_{10}(1-q N_{w,rel}^{1-\beta} \int_0^{r_s}\alpha Z_m^\beta(s)ds)
 \end{equation}
-Given an independent estimate of PIA from the SRT, $PIA_{SRT}$, one may determine the value of $dN_w$ that satisfy
-$PIA_{HB}(dN_w)=PIA_{SRT}$.  This provides a physical approach to reconcile the Hitschfeld-Bordan solution with a potentially
+Given an independent estimate of PIA from the SRT, $PIA_{SRT}$, one may determine the value of $N_{w,rel}$ that satisfy
+$PIA_{HB}(N_{w,rel})=PIA_{SRT}$.  This provides a physical approach to reconcile the Hitschfeld-Bordan solution with a potentially
 different SRT PIA estimate \cite{ferreira2001}.  The benefit of this approach relative to more ad-hoc approaches such
 as the $\alpha$ adjustment method \cite{iguchi_meneghini_1994} is that it enables the adjustment of the $Z-R$ 
 (or $Z-PWC$) used in the estimation of precipitation rates (or equivalent water contents) from the attenuation corrected
@@ -221,9 +232,9 @@ precipitation relationship.  Therefore, the benefit of using $N_w$-based relatio
 A simple implementation of the Hitschfeld-Bordan solution in the Python programming language is given listing \ref{HBlist} and
 available online at \\https://tinyurl.com/COMBALG.
 \begin{lstlisting}[caption={Python implementation of the Histchfeld-Bordan solution.},captionpos=b,label={HBlist}]
-def hb(Zm,dN,alpha,beta,dr):
+def hb(Zm,Nrel,alpha,beta,dr):
     q=0.2*np.log(10)
-    eps=dN**(1-beta)
+    eps=Nrel**(1-beta)
     zeta=q*beta*eps*alpha*10**(0.1*Zm*beta)*dr
     zetaSum=zeta.cumsum()[-1]
     if zetaSum>0.995:
@@ -234,14 +245,19 @@ def hb(Zm,dN,alpha,beta,dr):
     pia=-10/beta*np.log10(1-f*zeta.cumsum())
     return zc,pia,f
 \end{lstlisting}
-where Zm and Zc are the observed and attenuation corrected reflectivity vectors, alpha and beta are $\alpha$ and $\beta$, dN is
-the $dN_w$ and dr is the range bin size.  Although this implementation is deliberately simple to facilitate comprehension, 
-it has all the ingredients
-required for practical application.  In practice, it is possible that $\zeta (r_s) =q dN_w^{1-\beta} \int_0^{r_s}\alpha Z_m^\beta(s)ds \geq 1$. In 
+where Zm and Zc are the observed and attenuation corrected reflectivity vectors, alpha and beta are $\alpha$ and $\beta$, Nrel is $N_{w,rel}$,
+and dr is the range bin size.  Although this attenuation-correction implementation is deliberately simple to 
+facilitate comprehension, it has all the ingredients
+required for practical application.  In practice, it is possible that $\zeta (r_s) =q N_{w,rel}^{1-\beta} \int_0^{r_s}\alpha Z_m^\beta(s)ds \geq 1$. In 
 such situations, the Hitschfeld Bordan approach does not work for ranges beyond the range value where $\zeta (r)=1$.  This behavior, which is 
 a consequence of the  accumulations of errors in the attenuation estimation and correction process, may be mitigated by simply rescaling 
-$\zeta (r)$ by a factor $f$ that makes $f \zeta{r}$ smaller than 1.0 for any $r<r_s$.  To keep the solution physically consistent the 
-relative normalized PSD intercept $dN_w$ needs to be rescaled $f^{\frac 1 {1-\beta}}$. 
+$\zeta(r)$ by a factor $f$ that makes $f \zeta(r)$ smaller than 1.0 for any $r<r_s$.  It is worth mentioning that the $\zeta(r)$ adjustment
+technique is used in all forward Hitschfeld-Bordan attenuation-correction algorithms (eg. \cite{iguchi_meneghini_1994},\cite{iguchi2000},
+\cite{iguchi_dpr}),
+although notations and computational procedures may vary from case to case.  Moreover, the interpretation of the physical meaning of 
+the $f$ factor is also variable.  A possible interpretation is that $f\ne1.0$ is indicative of an $N_w$ value different from that
+used in the derivation of the $k-Z$ relationship. To reconcile the $N_w$ value used in the attenuation correction with the final $PIA_{HB}$, 
+one can rescale it by $f^{\frac 1 {1-\beta}}$. 
 
 It should be noted that because neither the SRT estimates nor the Hitschfeld-Bordan predictions of PIA are perfect,
 equating them exactly is suboptimal because it attributes various types of uncertainties to variability in the $N_w$.
@@ -249,7 +265,8 @@ A better approach is to adjust $N_w$ such that the final $PIA_{HB}$ is consisten
 initial values (prior to the SRT based adjustment) and the $PIA_{SRT}$ uncertainties. Iguchi et al. \cite{iguchi2000}
 developed such a methodology based on Bayes estimation theory. However, Iguchi et al. \cite{iguchi2000} did not update
 the Hitschfeld-Bordan solution in terms of $N_w$, but in terms of an equivalent variable $\epsilon$, and it was Ferreira
-et al. \cite{ferreira2001} who made the connection between SRT estimates and $N_w$ adjustments.
+et al. \cite{ferreira2001} who made the connection between SRT estimates and $N_w$ adjustments. A similar $N_w$-$\epsilon$
+connection is used in the GPM DPR algorithm \cite{iguchi_dpr}. 
 
 The use of normalized $k-Z$ and $Z$-precipitation relation is beneficial even when SRT PIA estimates are not available
 but additional sources of information, such as coincident radiometer observations are available.  Specifically, if a
@@ -295,7 +312,7 @@ temperature $T$ and the radiometer's frequency and $p(\mu,\phi,\mu',\phi')$ is t
 of the radiative transfer equation are computationally intensive.  However, the assumption of no azimuthal dependence and the
 approximation of $I$ and $p(\mu,\mu')$ using the first two terms of a Legendre series \cite{kummerow1993} reduce the initial equation
 to a system of two coupled ordinary differential equations \cite{kummerow1993}.  Systematic evaluations between the approximate solution
-and more general solutions revealed differences that can mitigate through simple modifications that account for geometric effects in
+and more general solutions revealed differences that can be mitigated through simple modifications that account for geometric effects in
 the approximate solution \cite{liu1996}.
 
 The relevant coefficients in Eq. (\ref{eq:rte}) are determined through the integration of the absorption, scattering and phase function
@@ -414,11 +431,11 @@ observations accounting for higher interactions between the energy emitted by th
 precipitation electromagnetic scattering properties such as the extinction and scattering coefficients, the asymmetry factor and the 
 unattenuated reflectivity. These properties may be obtained from the scattering lookup tables using procedures similar to that outlined in listing \ref{LTlist}.
 
-An example of Ku-band radar observed reflectivity profile from the Global Precipitation Mission (GMP) \cite{gail2017} is shown in \ref{fig:NUBF}.  
+An example of Ku-band radar observed reflectivity profile from the Global Precipitation Mission (GPM) \cite{gail2017} is shown in \ref{fig:NUBF}.  
 The Ka-band reflectivity profiles derived from the Ku-band
 estimates using three different models are also shown in the figure.  The first model, indicated as $Z_{sim}(Ka)$ in the figure, is a simple single-scattering 
 model that does not account for either NUBF or multiple scattering effects.  The second model, $Z_{NUBFsim}(Ka)$, accounts for NUBF effects, while the third,
-$Z_{MS}(Ka)$ accounts for multiple scattering effects using the implementation of \cite{hogan2008}.  Note that the difference between the model that accounts 
+$Z_{MS}(Ka)$ accounts for multiple scattering effects using the of \cite{hogan2008}.  Note that the difference between the model that accounts 
 for multiple scattering and those that do not
 are extremely large.  In the absence of such a model, the optimal estimation framework would interpret the differences between simulated and observed Ka-band
 reflectivities as severe attenuation at Ka-band and would adjust the solution to one characterized by significantly less attenuation.  The adjusted solution
@@ -453,13 +470,13 @@ observed radiometer observations.
 
 \section{GPM combined observations and retrievals}
 \subsection{Observations}
-Shown in figure \ref{fig:dataEx} is an example of observations from the Global Precipitation Measurement (GPM) mission \cite{gail2017}.
+Shown in figure \ref{fig:dataEx} is an example of observations from the GPM mission.
 Specifically, observed reflectivity from the Dual Frequency Precipitation Radar (DPR) and two of the associated brightness temperatures
 from the GPM Microwave Imager (GMI) \cite{gail2017} for a portion of orbit 5866 over the Kwajelein atoll are shown. 
 As apparent in the figure, at reflectivity observations tend to be significantly attenuated 
 at Ka-band. Some scans exhibit attenuation even at Ku-band.  As discussed in the previous sections, the reflectivity observations need
 to be corrected for attenuation to be usable in the derivation of precipitation estimates. Independent estimates of the PIA from the application
-of SRT method are extremely important in the attenuation correction process.  However, reliable SRT PIA estimates are not always available,
+of SRT method are extremely important in the attenuation-correction process.  However, reliable SRT PIA estimates are not always available,
 especially when only single frequency radar-observations are available and the attenuation is low relative to the noise in the estimates.
 An assessment of the accuracy of the DPR PIA estimates from the single and dual frequency SRT method is provided in \cite{meneghini2015}.
 The 18.7-GHz brightness temperatures for orbit 5866 over the Kwajelein atoll are also shown in the bottom panel of Fig. \ref{fig:dataEx}.
@@ -470,7 +487,7 @@ properly specified.  The 18.7-GHz brightness temperatures are in qualitative agr
 in regions where the radar observations suggest high intensity precipitation and significant attenuation and attain their minimum values in regions
 where the radar does not detect any precipitation.  However, the 18.7-GHz exhibit significantly smoother along track variability than the radar
 observations.  This is because the GMI's footprint size at 18.7-GHz is significantly coarser than the DPR's footprint size. Specifically,
-the GMI's footprint resolution is 15.0 at 18.7-GHz \cite{gmi2015}, while that of the DPR is 4.5km.  As described in the previous section,
+the GMI's footprint resolution at 18.7-GHz is 11.0 km in the along-scan direction and 18.0 km in the cross-scan direction \cite{gmi2015}, while that of the DPR is 5.0 km.  As described in the previous section,
 various approaches such as deconvolution or the convolution of DPR footprint simulated brightness temperatures and the evaluation of brightness
 temperatures errors at the radiometer's footprint resolution may be used to account for the radar and radiometer's footprint size discrepancies.
 
@@ -491,7 +508,7 @@ they are extremely useful when accurate dual SRT PIA estimates are not available
 collected only across half of entire single frequency swath \cite{seto2021}.  This is because the GPM Ka-band frequency radar collects observations in two modes,
 and both modes were focused on the near nadir portion of the scan prior to 21 May 2018 when a scan pattern change was implemented to enable the collection of 
 dual-frequency observations across the entire DPR swath. This means that dual SRT PIA estimates were not available across the entire DPR swath before the
-scan pattern change.  Therefore, a statistical relationship to estimate the dual SRT PIA from observed brightness temperatures 
+scan pattern change.  Therefore, a statistical relationship to estimate the dual SRT PIA from orbserved brightness temperatures 
 does not have only theoretical but also practical value.  Moreover, the Tropical Rainfall Measuring Mission (TRMM)  PR was a single frequency radar \cite{kummerow1998}
 and the fraction  of reliable SRT PIA estimates from single frequency observations is significantly smaller than that from dual frequency observations. Thus, a statistical 
 brightness temperature PIA relation is extremely beneficial to TRMM precipitation estimates.  At the same time, it is expected that future space borne radars

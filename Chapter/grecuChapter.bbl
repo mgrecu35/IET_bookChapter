@@ -1,5 +1,4 @@
-\begin{thebibliography}{10}
-
+\begin{thebibliography}{}
 \bibitem{weinman90}
 Weinman JA, Meneghini R, Nakamura K.   
 \newblock Retrieval of precipitation profiles from airborne radar and passive radiometer measurements: Comparison with dual-frequency radar measurements.
@@ -164,6 +163,11 @@ Ferreira F, Amayenc P, Oury S, Testud J.
 \newblock Study and tests of improved rain estimates from the TRMM precipitation radar. 
 \newblock Journal of Applied Meteorology. 2001;40(11):1878-99.
 
+\bibitem{berne2017}
+Raupach, Berne A.
+\newblock Invariance of the Double-Moment Normalized Raindrop Size Distribution through 3D Spatial Displacement in Stratiform Rain. 
+\newblock  J. Appl. Meteor. Climatol. 2017; 56; 1663–1680.
+
 \bibitem{impacts2022}
 McMurdie LA, Heymsfield GM, Yorks JE, Braun SA, Skofronick-Jackson G, Rauber RM, Yuter S, Colle B, McFarquhar GM, Poellot M, Novak DR. 
 \newblock Chasing Snowstorms: The Investigation of Microphysics and Precipitation for Atlantic Coast-Threatening Snowstorms (IMPACTS) Campaign. 
@@ -183,6 +187,11 @@ Meneghini R, Eckerman J, Atlas D.
 Marzoug M, Amayenc P. 
 \newblock Improved range-profiling algorithm of rainfall rate from a spaceborne radar with path-integrated attenuation constraint.
 \newblock IEEE Transactions on Geoscience and Remote Sensing. 1981; 29(4): 584-592.
+
+\bibitem{iguchi_dpr}
+Iguchi T, Seto S, Meneghini  R, Yoshida N, Awaka J, Le M, Chandrasekar V, Kubota T. 
+\newblock GPM/DPR Level-2 Algorithm Theoretical Basis Document; NASA Technical Report.  
+\newblock 2018. Available online: https://gpm.nasa.gov/resources/documents/gpmdpr-level-2-algorithm-theoretical-basis-document-atbd
 
 \bibitem{iguchi2000}
 Iguchi T, Kozu T, Meneghini R, Awaka J, Okamoto KI. 
@@ -315,7 +324,4 @@ Gong J, Wu DL, Eriksson P.
 \newblock The first global 883 GHz cloud ice survey: IceCube Level 1 data calibration, processing and analysis. 
 \newblock Earth System Science Data. 2021 Nov 18;13(11):5369-87.
 
-
-
 \end{thebibliography}
-

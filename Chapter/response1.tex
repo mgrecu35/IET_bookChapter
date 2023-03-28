@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\author{Mircea Grecu, and William S. Olson}
+\title{Satellite Combined Radar-Radiometer
+algorithms\\
+Responses to Reviewer 1}
+\date{}
+\begin{document}
+\maketitle
+
+
+We thank the reviewer for the insightful comments and suggestions. 
+Here are our point by point responses.
+
+\begin{enumerate}
+\item	{\textit{variability could be also due to Nw...in fact more so than Dm? The independent information from PIA...what is this PIA constraint. 
+To me it sounds like SRT?}
+%italic
+
+Yes, indeed, both Nw and Dm are important parameters in describing PSDs. Our intent here is to draw the reader's attention to the
+fact that, irrespective of the mathematical tools used, properly accounting for the PSD variability and its impact on observations
+is a key issue. 
+
+Regarding the PIA constraint, in principle, it is possible to independently derive the PIA from coincident radiometer observations.
+From this perspective, the Surface Reference Technique is not the only means to derive the PIA estimates.  This is the reason why
+we have not used the term SRT in the text.}
+
+\item {\textit{to maximize the agreement between radiometer 
+measurements .....actual radiometer measurements}\\
+We rephrased the statement as suggested.  Regarding the agreement between simulation and observations, we have added the clarification
+that the agreement is achieved my minimizing the differences between simulations and observations.}
+
+\item {\textit{what does 'consistence' mean in this context?}\\
+Consistency here means that the radiometer measurements simulated from the radar estimates are in agreement with their observed values. We added a statement in 
+the text to clarify this.}
+
+\item{\textit{To my understanding M\&P merged experimental DSDs within range of sequential rain rates...}\\
+Thank you for your insight on this.
+}
+
+\item{\textit{the Rayleigh regime typically has the factor sqrt(epslon) in it.}\\
+For simplicity and consistency with the definition of the size parameter in general text books on electromagnetic scattering, we have
+omitted the factor $\sqrt{\epsilon}$ in the definition.}
+
+\item {\textit{Eq 1.1 and the text following it.}\\
+    We agree with the reviewer that the discussion may be unnecessary and even confusing.  Nevertheless, we thought it may be 
+    useful to readers that may not be aware of the fact that $Z=\int _0 ^{\infty} N(D) D^6 dD$ holds only for the Rayleigh regime. 
+    Unfortunately, there are textbooks that define $Z$ as the integral of $N(D) D^6 dD$ without any mention of the Rayleigh regime.
+}
+\item {\textit{This  procedure is termed ...}\\
+Thank you for your insight on this.  We have included statements reflecting the reviewer's perspective and a reference 
+in the text.
+}
+
+\item {\textit{aproximate.}\\
+We have included the suggestion in the text.
+}
+
+\item {\textit{This property applies to any variable that is normalized by Nw.}\\
+Thank you for the suggestion.  We have included it in the text.
+}
+
+\item{\textit{it seems that beta is constant exponent based on scattering simulations using a rain DSD model
+How sensitive is beta to changes in water T, DSD shape changes or when the beam encounters
+rain mixed with melting particles?}\\
+Parameter $\beta$ does not strongly depend on the water temperature or the DSD shape.  However, it is sensitive to the 
+phase of the particle. Strategies to account for the phase dependence of $\beta$ are discussed by Iguchi and Meneghini (1994)
+and Grecu et al. (2011). We included a clarifying statement in the text.}
+
+\item{\textit{that can be mitigated}\\
+Thank you for noticing the incorrect formulation.  We have corrected it in the text.
+}
+
+\item{\textit{please improve figure quality eg by adding a panel that gives the differences}\\
+Thank you for the suggestion. The differences among the simulated Ka-band reflectivity observations are meant to be rather qualitative and
+give an idea of the impact of NUBF and multiple scattering on the simulations. For simplicity, we prefer to keep the figure as it is.
+}
+
+\item{\textit{Figure labeling.}\\
+We apologize for the figure labeling errors. We believe they are caused by the Latex supporting files that were provided by the publisher. 
+We refer to figures in the text using labels rather than numbers, and rely on the Latex compiler to assign the correct numbers to the figures.
+The style file provided by the publisher does not seem to work properly on our system, but we believe the professional editor can easily fix the
+figure numbering problem during the editorial process.}
+
+\end{enumerate}
+
+\end{document}

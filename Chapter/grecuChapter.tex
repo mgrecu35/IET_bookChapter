@@ -171,7 +171,7 @@ and water \cite{ferreira2001}. Or, more generally, this property applies any pai
 
 \begin{figure} 
 \centerline{ }
-\includegraphics[width=\textwidth]{normZvsnormIWC.png}
+\includegraphics[width=\textwidth]{fig1.png}
 
 \caption{ (Left) joint distribution of ice water content (IWC) and associated Ku-band reflectivity calculated from PSD observations from IMPACTS and
 (Right) joint distribution of normalized IWC and Ku-band reflectivity. }
@@ -192,8 +192,8 @@ power law, i.e. $k=\alpha Z^\beta$ with $\beta$ constant with range, a closed fo
 Z(r)=Z_m(r) /(1-q\int_0^r Z_m^\beta(s)ds)^{1/\beta}
 \end{equation}
 where $q=0.2\beta ln(10)$.  This solution was first derived by Hitschfeld and Bordan \cite{hitschfeld1954} and started
-getting prominent in spaceborne radar applications with the work of \cite{meneghini1983}, \cite{marzoug1991} 
-and \cite{iguchi_meneghini_1994}. It should be noted that parameter $\beta$ has to be constant with range for the solution to be applicable.
+getting prominent in spaceborne radar applications with the work of \cite{iguchi_meneghini_1994}, \cite{meneghini1983}, 
+and \cite{marzoug1991}. It should be noted that parameter $\beta$ has to be constant with range for the solution to be applicable.
 However, $\beta$ is a function of the precipitation phase and varies, although not significantly. with range. 
 Parameter $\alpha$, on the other hand, does not vary with range. This makes it possible to account for variation in $\beta$ by
 variations in $\alpha$ \cite{iguchi_meneghini_1994}.
@@ -202,7 +202,7 @@ A particular challenge in applying Eq. (\ref{eq:hbsol}) to radar observations af
 that the numerical value of term $q\int_0^r Z_m^\beta(s)ds$ may become larger than 1.0, in which case the equation
 is not applicable anymore. Moreover, even if $q\int_0^r Z_m^\beta(s)ds<1$ the path integrated attenuation associated
 with Eq. (\ref{eq:hbsol}) may not be in agreement with estimates from a Surface Reference Technique (SRT) analysis.  This
-is discussed in \cite{marzoug1991} and \cite{iguchi_meneghini_1994}.  Several ad-hoc techniques were developed to 
+is discussed in \cite{iguchi_meneghini_1994} and \cite{marzoug1991}.  Several ad-hoc techniques were developed to 
 reconcile solution \ref{eq:hbsol} with the SRT estimates, but, fundamentally, the problem was not satisfactorily 
 addressed from the physical perspective until the work of Ferreira et al. \cite{ferreira2001}. 
 Ferreira et al. \cite{ferreira2001} noted that all $k-Z$, $Z-R$ or $Z-PWC$ (where $k$ is the specific attenuation
@@ -448,7 +448,7 @@ associated with uniform extinction within the radar observing volumes.
 \begin{figure}  \label{fig:NUBF}
 \centering
     \centerline{ }
-    \includegraphics[width=0.6\textwidth]{retrievedZKa.png}
+    \includegraphics[width=0.6\textwidth]{fig2.png}
     
     \caption{Example of Ka-band reflectivity profile calculated from  Ku-band-only precipitation estimates. Multiple Ka-band reflectivity models are
     included, i.e. single scattering model, single model accounting for NUBF, and multiple scattering model.}
@@ -493,7 +493,7 @@ temperatures errors at the radiometer's footprint resolution may be used to acco
 
 \begin{figure} \label{fig:dataEx}
     \centerline{ }
-    \includegraphics[width=\textwidth]{kwajObs.20150311-S162503-E162626.005866.png}
+    \includegraphics[width=\textwidth]{fig3.png}
     
     \caption{Example of observed DPR Ku-(top), Ka-band reflectivities (middle), and GMI 18.7-GHz brightness temperatures (bottom).}
 \end{figure}
@@ -544,7 +544,7 @@ single and differential SRT estimates.  This is not surprising, given that the r
 
 \begin{figure} \label{fig:ML_PIA}
     \centerline{}
-    \includegraphics[width=\textwidth]{ML_PIA.png}
+    \includegraphics[width=\textwidth]{fig4.png}
     
     \caption{(Left) Ku-band PIA estimates from the single frequency SRT analysis against Ku-band PIA estimates from the single frequency SRT analysis. Brightness-
     temperature ML-based PIA estimates against reference PIA estimates from both single and dual-frequency SRT analysis.}
@@ -590,13 +590,13 @@ observations are expected to be extremely consequential for such radar observati
 
 \begin{figure}\label{fig:retrievals}
     \centerline{}
-    \includegraphics[width=\textwidth]{retPIA.png}
+    \includegraphics[width=\textwidth]{fig5.png}
     
-    \caption{(Top) PIA estimates from the ML model, the official DPR version 7 algorithm, the differential and single frequency (Ku)
-    SRT method associated with the observations in Fig. \ref{fig:dataEx}.  A range of Histchfeld-Bordan PIA derived using $N_w$ two times larger and smaller 
+    \caption{(Top) Differential PIA estimates from the ML model, the official DPR version 7 algorithm, the dual and single frequency (Ku)
+    SRT method associated with the observations in Fig. \ref{fig:dataEx}.  A range of Hitschfeld-Bordan PIA derived using $N_w$ two times larger and smaller 
     than the reference value of 0.08cm$^4$ is also
-    shown.(Bottom). The surface precipitation estimates from the Histchfeld-Bordan approach associated with the PIA shown in the top panel
-    and the optimal surface precipitation estimate.}
+    shown.(Bottom). The surface precipitation estimates from the Histchfeld-Bordan approach associated with the PIAs shown in the top panel 
+    (labeled Prior) and the optimal surface precipitation estimate (labeled Final).}
 \end{figure}
 
 \section{Summary and conclusions}

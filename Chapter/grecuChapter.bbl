@@ -8,7 +8,7 @@ Weinman JA, Meneghini R, Nakamura K.
 \bibitem{hitschfeld1954}
   Hitschfeld W, Bordan J.
 \newblock Errors inherent in the radar measurement of rainfall at attenuating wavelengths.
-\newblock  Journal of Atmospheric Sciences. 1990; 11(1): 58--67.
+\newblock  Journal of Atmospheric Sciences. 1954; 11(1): 58--67.
 
 \bibitem{Meneghini1983}
   Meneghini R, Eckerman J, Atlas D.
@@ -65,20 +65,12 @@ Hou A.
 \newblock The global precipitation measurement mission. 
 \newblock Bulletin of the American Meteorological Society. 2014; 95: 701--722.
 
-\bibitem{meneghini1990}
-Meneghini R, Kozu T.
-\newblock Spaceborne weather radar.
-\newblock Boston: Artech House Publ. 1990; ISBN: 0890063826.
+
 
 \bibitem{marshall_palmer_1948}
 Marshall JS, Palmer WMK.
 \newblock The distribution of raindrops with size. 
 \newblock J. Meteorol. 1948; 5: 165–166.
-
-\bibitem{marshall_w_palmer_1947}
-Marshall JS, Langille RC, Palmer WMK.
-\newblock Measurement of rainfall by radar.
-\newblock Journal of Atmospheric Sciences. 1997; 4(6): 186--192.
 
 
 
@@ -97,10 +89,11 @@ Heymsfield A.
 \newblock Precipitation Development in Stratiform Ice Clouds: A Microphysical and Dynamical Study
 \newblock Journal of Atmospheric Sciences. 1977; 34(2): 367--381.
 
-\bibitem{battan1973}
-Battan LJ.
-\newblock Radar observation of the atmosphere.
-\newblock 1973.
+\bibitem{meneghini1990}
+Meneghini R, Kozu T.
+\newblock Spaceborne weather radar.
+\newblock Boston: Artech House Publ. 1990; ISBN: 0890063826.
+
 
 \bibitem{bhmie2008}
 Bohren CF, Huffman DR. 
@@ -111,6 +104,11 @@ Bohren CF, Huffman DR.
 Mishchenko MI, Travis LD, Lacis AA. 
 \newblock Scattering, absorption, and emission of light by small particles. 
 \newblock Cambridge university press. 2002.
+
+\bibitem{battan1973}
+Battan LJ.
+\newblock Radar observation of the atmosphere.
+\newblock 1973.
 
 \bibitem{tyynela2011}
 Tyynelä J, Leinonen J, Moisseev D, Nousiainen T. 
@@ -133,15 +131,16 @@ Draine BT, Flatau PJ.
 \newblock Discrete-dipole approximation for scattering calculations. 
 \newblock Josa A. 1994;11(4):1491-9.
 
+\bibitem{spectral_matlab}
+Trefethen LN. 
+\newblock Spectral methods in MATLAB. 
+\newblock Society for industrial and applied mathematics; 2000.
+
 \bibitem{hogan2017}
 Hogan RJ, Honeyager R, Tyynelä J, Kneifel S. 
 \newblock Calculating the millimetre‐wave scattering phase function of snowflakes using the self‐similar Rayleigh–Gans Approximation. 
 \newblock Quarterly Journal of the Royal Meteorological Society. 2017;143(703):834-44.
 
-\bibitem{spectral_matlab}
-Trefethen LN. 
-\newblock Spectral methods in MATLAB. 
-\newblock Society for industrial and applied mathematics; 2000.
 
 \bibitem{rosenkranz1998}
 Rosenkranz PW. 
